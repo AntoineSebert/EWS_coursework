@@ -9,13 +9,15 @@
 	<meta name="description" content="3-Tier RSS Feed Tool">
 	<meta name="keywords" content="education, coursework, RSS, webdev, 3-tier">
 	<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comfortaa" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
 	<link rel="stylesheet" href="style/common.css" type="text/css">
-	<link rel="stylesheet" href="style/index.css" type="text/css">
+	<link rel="stylesheet" href="style/index.min.css" type="text/css">
+	<script defer src="script/index.min.js"></script>
 	<template>
-		<rss version="2.0">
+		<rss version="2.0" type="application/rss+xml">
 			<channel>
 				<title>RSS Title</title>
 				<description>This is an example of an RSS feed</description>
@@ -23,6 +25,7 @@
 				<lastBuildDate><time datetime="2008-02-14 20:00">Mon, 06 Sep 2010 00:01:00 +0000</time></lastBuildDate>
 				<pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
 				<ttl>1800</ttl>
+
 				<item>
 					<title>Example entry</title>
 					<description>Here is some text containing an interesting description.</description>
@@ -30,6 +33,7 @@
 					<guid isPermaLink="false">7bd204c6-1655-4c27-aeee-53f933c5395f</guid>
 					<pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
 				</item>
+
 			</channel>
 		</rss>
 	</template>
@@ -53,12 +57,17 @@
 			<p>Seize the means of RSS feeds</p>
 		</div>
 	</header>
+
 	<nav>
-		<a href="#" class="active">Home</a>
-		<a href="#">Link</a>
-		<a href="#">Link</a>
-		<a href="#" class="right">Link</a>
+		<a href="#" class="active">
+			<i class="fas fa-bars fa-2x"></i>
+		</a>
+		<input id=filter_field type="text" name="filter" placeholder="Filter.." onchange="">
+		<a href="#" class="right">
+			<i class="far fa-user fa-2x"></i>
+		</a>
 	</nav>
+
 	<main>
 		<ol>
 			<li>
@@ -171,8 +180,6 @@
 
 </html>
 
-<!-- Cinnalemon or YouRSS -->
-
 <!--
 FONTS
 
@@ -190,25 +197,13 @@ inpage sign in/up/out
 	https://www.w3schools.com/howto/howto_js_password_validation.asp
 	https://www.w3schools.com/howto/howto_js_toggle_password.asp
 
-top banner
-	https://www.w3schools.com/howto/howto_css_blurred_background.asp
-
 navbar (always visible, stick to top)
-	https://www.w3schools.com/howto/howto_css_icon_bar.asp
-	https://www.w3schools.com/howto/howto_css_menu_icon.asp
-	https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
-	https://www.w3schools.com/howto/howto_css_responsive_header.asp
-	https://www.w3schools.com/howto/howto_css_animated_search.asp
-	https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
-	feed registrations icon left
+	feed registrations icon left / account menu icon right
 		https://www.w3schools.com/howto/howto_js_autocomplete.asp
 		https://www.w3schools.com/howto/howto_js_filter_lists.asp
 		https://www.w3schools.com/howto/howto_js_filter_elements.asp
-		reveal menu
-			https://www.w3schools.com/howto/howto_js_sidenav.asp / https://www.w3schools.com/howto/howto_js_off-canvas.asp (?)
-	account menu icon right
-		reveal menu
-			https://www.w3schools.com/howto/howto_js_sidenav.asp / https://www.w3schools.com/howto/howto_js_off-canvas.asp (?)
+		https://www.w3schools.com/howto/howto_js_sidenav.asp
+		https://www.w3schools.com/howto/howto_js_off-canvas.asp
 
 selected feed(s) content
 	https://www.w3schools.com/howto/howto_css_zig_zag_layout.asp
@@ -228,4 +223,7 @@ https://www.w3schools.com/howto/howto_css_social_media_buttons.asp
 https://www.w3schools.com/howto/howto_js_scroll_indicator.asp
 https://www.w3schools.com/howto/howto_html_include.asp
 https://www.w3schools.com/howto/howto_js_offline_detection.asp
+
+https://fontawesome.com/icons?d=gallery
+https://en.wikipedia.org/wiki/Representational_state_transfer
 -->

@@ -16,23 +16,23 @@ header {
 	color: firebrick;
 }
 
-header h1 {
+#title-container h1 {
 	padding-top: 80px;
 	text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+		-1px -1px 0 #fff,
+		1px -1px 0 #fff,
+		-1px 1px 0 #fff,
+		1px 1px 0 #fff;
 }
 
-header p {
+#title-container p {
 	padding-bottom: 100px;
 	margin-bottom: 0;
 	text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+		-1px -1px 0 #fff,
+		1px -1px 0 #fff,
+		-1px 1px 0 #fff,
+		1px 1px 0 #fff;
 }
 
 #credit-badge {
@@ -68,7 +68,6 @@ nav a {
 	text-decoration: none;
 }
 
-
 nav a.right {
 	float: right;
 }
@@ -81,6 +80,28 @@ nav a:hover {
 nav a.active {
 	background-color: #666;
 	color: white;
+}
+
+#filter_field {
+	color: white;
+	width: 10%;
+	min-width: 130px;
+	margin-left: 41%;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: transparent;
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	padding: 12px 20px 12px 20px;
+	transform: translateY(20%);
+	transition: all 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+#filter_field:focus {
+	width: 30%;
+	margin-left: 31%;
 }
 
 main {
