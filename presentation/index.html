@@ -13,8 +13,7 @@
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comfortaa" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
-	<link rel="stylesheet" href="style/common.css" type="text/css">
-	<link rel="stylesheet" href="style/index.min.css" type="text/css">
+	<link rel="stylesheet" href="style/index.css" type="text/css">
 	<script defer src="script/index.min.js"></script>
 	<template>
 		<rss version="2.0" type="application/rss+xml">
@@ -63,10 +62,43 @@
 			<i class="fas fa-bars fa-2x"></i>
 		</a>
 		<input id=filter_field type="text" name="filter" placeholder="Filter.." onchange="">
-		<a href="#" class="right">
+		<a href="#" class="right" onclick="document.getElementById('loginbox').style.display='block'">
 			<i class="far fa-user fa-2x"></i>
 		</a>
 	</nav>
+
+	<div id="loginbox" class="modal">
+		<form class="modal-content animate" action="/action_page.php">
+			<span onclick="document.getElementById('loginbox').style.display='none'" class="close" title="Close Modal">&times;</span>
+			<div class="container">
+				<label for="email"><b>Email</b></label>
+				<input type="email" placeholder="Enter Email" name="email" required>
+
+				<label for="psw"><b>Password</b></label>
+				<input id=password_field type="password" placeholder="Enter Password" name="psw" required>
+				<label>
+					<input type="checkbox" onclick="change_password_visibility()">Show Password
+				</label>
+
+				<button type="submit">Login/Register</button>
+				<label>
+					<input type="checkbox" checked="checked" name="remember"> Remember me
+				</label>
+			</div>
+
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" onclick="document.getElementById('loginbox').style.display='none'" class="cancelbtn">Cancel</button>
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+		</form>
+		<div id="message">
+			<h3>Password must contain the following:</h3>
+			<p id="letter" class="invalid"><i class="fas fa-times"></i> A <b>lowercase</b> letter</p>
+			<p id="capital" class="invalid"><i class="fas fa-times"></i> A <b>capital (uppercase)</b> letter</p>
+			<p id="number" class="invalid"><i class="fas fa-times"></i> A <b>number</b></p>
+			<p id="length" class="invalid"><i class="fas fa-times"></i> Minimum <b>8 characters</b></p>
+		</div>
+	</div>
 
 	<main>
 		<ol>
@@ -192,10 +224,7 @@ brand : https://fonts.google.com/specimen/Srisakdi
 COMPONENTS
 
 inpage sign in/up/out
-	https://www.w3schools.com/howto/howto_css_login_form.asp
 	https://www.w3schools.com/howto/howto_css_form_icon.asp
-	https://www.w3schools.com/howto/howto_js_password_validation.asp
-	https://www.w3schools.com/howto/howto_js_toggle_password.asp
 
 navbar (always visible, stick to top)
 	feed registrations icon left / account menu icon right

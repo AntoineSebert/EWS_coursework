@@ -1,0 +1,295 @@
+@images: "../image";
+@background: #333;
+@content: #666;
+@accent: #ddd;
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Comfortaa;
+	margin: 0;
+}
+
+header {
+	background-image: url("@{images}/genessa-panainte-179123-unsplash.jpg");
+	background-position: bottom;
+	background-attachment: fixed;
+	background-size: cover;
+	font-size: 30px;
+	text-align: center;
+
+	#credit-badge {
+		text-align: right;
+
+		a {
+			background-color: black;
+			color: white;
+			text-decoration: none;
+			padding: 4px 6px;
+			font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+			font-size: 12px;
+			font-weight: bold;
+			line-height: 1.2;
+			border-radius: 3px;
+		}
+	}
+
+	#title-container {
+		color: firebrick;
+
+		h1 {
+			padding-top: 80px;
+			text-shadow:
+				-1px -1px 0 #fff,
+				1px -1px 0 #fff,
+				-1px 1px 0 #fff,
+				1px 1px 0 #fff;
+		}
+
+		p {
+			padding-bottom: 100px;
+			margin-bottom: 0;
+			text-shadow:
+				-1px -1px 0 #fff,
+				1px -1px 0 #fff,
+				-1px 1px 0 #fff,
+				1px 1px 0 #fff;
+		}
+	}
+}
+
+nav {
+	overflow: hidden;
+	background-color: @background;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+
+	a {
+		float: left;
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 20px;
+		text-decoration: none;
+	}
+
+	a.right {
+		float: right;
+	}
+
+	a:hover {
+		background-color: @accent;
+		color: black;
+	}
+
+	a.active {
+		background-color: @content;
+		color: white;
+	}
+
+	#filter_field {
+		color: white;
+		width: 10%;
+		min-width: 130px;
+		margin-left: 41%;
+		box-sizing: border-box;
+		border: 2px solid @accent;
+		border-radius: 4px;
+		background-color: transparent;
+		background-position: 10px 10px;
+		background-repeat: no-repeat;
+		padding: 12px 20px 12px 20px;
+		transform: translateY(20%);
+		transition: all 0.4s ease-in-out;
+	}
+
+	/* When the input field gets focus, change its width to 100% */
+	#filter_field:focus {
+		width: 30%;
+		margin-left: 31%;
+	}
+}
+
+.modal {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
+	padding-top: 10%;
+
+	/* Full-width input fields */
+	input[type=email],
+	input[type=text],
+	input[type=password] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+	}
+
+	/* Set a style for all buttons */
+	button {
+		background-color: #4CAF50;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	button:hover {
+		opacity: 0.8;
+	}
+
+	/* Extra styles for the cancel button */
+	.cancelbtn {
+		width: auto;
+		padding: 10px 18px;
+		background-color: #f44336;
+	}
+
+	/* Center the image and position the close button */
+	.imgcontainer {
+		text-align: center;
+		margin: 24px 0 12px 0;
+		position: relative;
+	}
+
+	img.avatar {
+		width: 40%;
+		border-radius: 50%;
+	}
+
+	.container {
+		padding: 16px;
+	}
+
+	span.psw {
+		float: right;
+		padding-top: 16px;
+	}
+
+	/* Modal Content/Box */
+	.modal-content {
+		background-color: #fefefe;
+		margin: 5px auto;
+		/* 15% from the top and centered */
+		border: 1px solid #888;
+		width: 40%;
+		/* Could be more or less, depending on screen size */
+	}
+
+	/* The Close Button */
+	.close {
+		/* Position it in the top right corner outside of the modal */
+		color: #000;
+		font-size: 35px;
+		font-weight: bold;
+		margin-left: 10px;
+	}
+
+	/* Close button on hover */
+	.close:hover,
+	.close:focus {
+		color: red;
+		cursor: pointer;
+	}
+
+	/* Add Zoom Animation */
+	.animate {
+		-webkit-animation: animatezoom 0.6s;
+		animation: animatezoom 0.6s
+	}
+
+	@-webkit-keyframes animatezoom {
+		from {
+			-webkit-transform: scale(0)
+		}
+
+		to {
+			-webkit-transform: scale(1)
+		}
+	}
+
+	@keyframes animatezoom {
+		from {
+			transform: scale(0)
+		}
+
+		to {
+			transform: scale(1)
+		}
+	}
+
+	#message {
+		display: none;
+		background: #f1f1f1;
+		color: #000;
+		position: relative;
+		padding: 20px;
+		margin-top: 10px;
+		margin: 5px auto;
+		/* 15% from the top and centered */
+		border: 1px solid #888;
+		width: 40%;
+	}
+
+	#message p {
+		padding: 10px 35px;
+		font-size: 18px;
+	}
+
+	/* Add a green text color and a checkmark when the requirements are right */
+	.valid {
+		color: green;
+	}
+
+	.valid:before {
+		position: relative;
+		left: -35px;
+	}
+
+	/* Add a red text color and an "x" icon when the requirements are wrong */
+	.invalid {
+		color: red;
+	}
+
+	.invalid:before {
+		position: relative;
+		left: -35px;
+	}
+}
+
+main {
+	-ms-flex: 70%;
+	/* IE10 */
+	flex: 70%;
+	background-color: white;
+	padding: 20px;
+}
+
+footer {
+	padding: 20px;
+	text-align: center;
+	background: @accent;
+}
