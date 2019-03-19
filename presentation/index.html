@@ -13,9 +13,8 @@
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comfortaa" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
-	<link rel="stylesheet" href="style/index.css" type="text/css">
-	<script defer src="script/index.min.js"></script>
-	<script defer src="script/include.min.js"></script>
+	<link rel="stylesheet" href="style/index.min.css" type="text/css">
+	<script defer src="script/index.js"></script>
 	<template>
 		<rss version="2.0" type="application/rss+xml">
 			<channel>
@@ -40,13 +39,29 @@
 </head>
 
 <body>
-	<header w3-include-html="fragment/header.html"></header>
+	<header>
+		<div id=credit-badge>
+			<a href="https://unsplash.com/@genessapana?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Genessa Panainte">
+				<span style="display:inline-block;padding:2px 3px">
+					<svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32">
+						<title>unsplash-logo</title>
+						<path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+					</svg>
+				</span>
+				<span style="display:inline-block;padding:2px 3px">Genessa Panainte</span>
+			</a>
+		</div>
+		<div id=title-container>
+			<h1>YouRSS</h1>
+			<p>Seize the means of RSS feeds</p>
+		</div>
+	</header>
 
 	<nav>
 		<a href="#">
 			<i class="fas fa-bars fa-2x"></i>
 		</a>
-		<input id=filter_field type="text" name="filter" placeholder="Filter.." onchange="">
+		<input id=filter_field type="text" name="filter" placeholder="Filter..">
 		<a href="#" class="right" onclick="document.getElementById('loginbox').style.display='block'">
 			<i class="far fa-user fa-2x"></i>
 		</a>
@@ -89,117 +104,140 @@
 	</div>
 
 	<main>
-		<ol>
+		<ol id=content_list>
 			<li>
-				<article>
-					<h2>Sample title</h2>
-					<p>
-						Ainsi, toujours poussés vers de nouveaux rivages,<br>
-						Dans la nuit éternelle emporté sans retour,<br>
-						Ne pourrons-nous jamais sur l’océan des âges<br>
-						Jeter l’ancre un seul jour ?
-					</p>
-					<p>
-						Ô lac ! l’année à peine a fini sa carrière,<br>
-						Et près des flots chéris qu’elle devait revoir,<br>
-						Regarde ! je viens seul m’asseoir sur cette pierre<br>
-						Où tu la vis s’asseoir !
-					</p>
-					<p>
-						Tu mugissais ainsi sous ces roches profondes ;<br>
-						Ainsi tu te brisais sur leurs flancs déchirés ;<br>
-						Ainsi le vent jetait l’écume de tes ondes<br>
-						Sur ses pieds adorés.
-					</p>
-					<p>
-						Un soir, t’en souvient-il ? nous voguions en silence ;<br>
-						On n’entendait au loin, sur l’onde et sous les cieux,<br>
-						Que le bruit des rameurs qui frappaient en cadence<br>
-						Tes flots harmonieux.
-					</p>
-					<p>
-						Tout à coup des accents inconnus à la terre<br>
-						Du rivage charmé frappèrent les échos :<br>
-						Le flot plus attentif, et la voix qui m’est chère<br>
-						Laissa tomber ces mots :
-					</p>
-					<p>
-						« Ô temps, suspends ton vol ! et vous, heures propices,<br>
-						» Suspendez votre cours !<br>
-						» Laissez-nous savourer les rapides délices<br>
-						» Des plus beaux de nos jours !
-					</p>
-					<p>
-						» Assez de malheureux ici-bas vous implorent,<br>
-						» Coulez, coulez pour eux ;<br>
-						» Prenez avec leurs jours les soins qui les dévorent ;<br>
-						» Oubliez les heureux.
-					</p>
-					<p>
-						» Mais je demande en vain quelques moments encore,<br>
-						» Le temps m’échappe et fuit ;<br>
-						» Je dis à cette nuit : Sois plus lente ; et l’aurore<br>
-						» Va dissiper la nuit.
-					</p>
-					<p>
-						» Aimons donc, aimons donc ! de l’heure fugitive,<br>
-						» Hâtons-nous, jouissons !<br>
-						» L’homme n’a point de port, le temps n’a point de rive ;<br>
-						» Il coule, et nous passons ! »
-					</p>
-					<p>
-						Temps jaloux, se peut-il que ces moments d’ivresse,<br>
-						Où l’amour à longs flots nous verse le bonheur,<br>
-						S’envolent loin de nous de la même vitesse<br>
-						Que les jours de malheur ?
-					</p>
-					<p>
-						Hé quoi ! n’en pourrons-nous fixer au moins la trace ?<br>
-						Quoi ! passés pour jamais ? quoi ! tout entiers perdus ?<br>
-						Ce temps qui les donna, ce temps qui les efface,<br>
-						Ne nous les rendra plus ?
-					</p>
-					<p>
-						Éternité, néant, passé, sombres abîmes,<br>
-						Que faites-vous des jours que vous engloutissez ?<br>
-						Parlez : nous rendrez-vous ces extases sublimes<br>
-						Que vous nous ravissez ?
-					</p>
-					<p>
-						Ô lacs ! rochers muets ! grottes ! forêt obscure !<br>
-						Vous que le temps épargne ou qu’il peut rajeunir,<br>
-						Gardez de cette nuit, gardez, belle nature,<br>
-						Au moins le souvenir !
-					</p>
-					<p>
-						Qu’il soit dans ton repos, qu’il soit dans tes orages,<br>
-						Beau lac, et dans l’aspect de tes riants coteaux,<br>
-						Et dans ces noirs sapins, et dans ces rocs sauvages<br>
-						Qui pendent sur tes eaux !
-					</p>
-					<p>
-						Qu’il soit dans le zéphyr qui frémit et qui passe,<br>
-						Dans les bruits de tes bords par tes bords répétés,<br>
-						Dans l’astre au front d’argent qui blanchit ta surface<br>
-						De ses molles clartés !
-					</p>
-					<p>
-						Que le vent qui gémit, le roseau qui soupire,<br>
-						Que les parfums légers de ton air embaumé,<br>
-						Que tout ce qu’on entend, l’on voit ou l’on respire,<br>
-						Tout dise : Ils ont aimé !
-					</p>
-				</article>
+				<p>
+					Ainsi, toujours poussés vers de nouveaux rivages,<br>
+					Dans la nuit éternelle emporté sans retour,<br>
+					Ne pourrons-nous jamais sur l’océan des âges<br>
+					Jeter l’ancre un seul jour ?
+				</p>
 			</li>
-		</ol>
-		<ol>
 			<li>
-				<article>
-				</article>
+				<p>
+					Ô lac ! l’année à peine a fini sa carrière,<br>
+					Et près des flots chéris qu’elle devait revoir,<br>
+					Regarde ! je viens seul m’asseoir sur cette pierre<br>
+					Où tu la vis s’asseoir !
+				</p>
+			</li>
+			<li>
+				<p>
+					Tu mugissais ainsi sous ces roches profondes ;<br>
+					Ainsi tu te brisais sur leurs flancs déchirés ;<br>
+					Ainsi le vent jetait l’écume de tes ondes<br>
+					Sur ses pieds adorés.
+				</p>
+			</li>
+			<li>
+				<p>
+					Un soir, t’en souvient-il ? nous voguions en silence ;<br>
+					On n’entendait au loin, sur l’onde et sous les cieux,<br>
+					Que le bruit des rameurs qui frappaient en cadence<br>
+					Tes flots harmonieux.
+				</p>
+			</li>
+			<li>
+				<p>
+					Tout à coup des accents inconnus à la terre<br>
+					Du rivage charmé frappèrent les échos :<br>
+					Le flot plus attentif, et la voix qui m’est chère<br>
+					Laissa tomber ces mots :
+				</p>
+			</li>
+			<li>
+				<p>
+					« Ô temps, suspends ton vol ! et vous, heures propices,<br>
+					» Suspendez votre cours !<br>
+					» Laissez-nous savourer les rapides délices<br>
+					» Des plus beaux de nos jours !
+				</p>
+			</li>
+			<li>
+				<p>
+					» Assez de malheureux ici-bas vous implorent,<br>
+					» Coulez, coulez pour eux ;<br>
+					» Prenez avec leurs jours les soins qui les dévorent ;<br>
+					» Oubliez les heureux.
+				</p>
+			</li>
+			<li>
+				<p>
+					» Mais je demande en vain quelques moments encore,<br>
+					» Le temps m’échappe et fuit ;<br>
+					» Je dis à cette nuit : Sois plus lente ; et l’aurore<br>
+					» Va dissiper la nuit.
+				</p>
+			</li>
+			<li>
+				<p>
+					» Aimons donc, aimons donc ! de l’heure fugitive,<br>
+					» Hâtons-nous, jouissons !<br>
+					» L’homme n’a point de port, le temps n’a point de rive ;<br>
+					» Il coule, et nous passons ! »
+				</p>
+			</li>
+			<li>
+				<p>
+					Temps jaloux, se peut-il que ces moments d’ivresse,<br>
+					Où l’amour à longs flots nous verse le bonheur,<br>
+					S’envolent loin de nous de la même vitesse<br>
+					Que les jours de malheur ?
+				</p>
+			</li>
+			<li>
+				<p>
+					Hé quoi ! n’en pourrons-nous fixer au moins la trace ?<br>
+					Quoi ! passés pour jamais ? quoi ! tout entiers perdus ?<br>
+					Ce temps qui les donna, ce temps qui les efface,<br>
+					Ne nous les rendra plus ?
+				</p>
+			</li>
+			<li>
+				<p>
+					Éternité, néant, passé, sombres abîmes,<br>
+					Que faites-vous des jours que vous engloutissez ?<br>
+					Parlez : nous rendrez-vous ces extases sublimes<br>
+					Que vous nous ravissez ?
+				</p>
+			</li>
+			<li>
+				<p>
+					Ô lacs ! rochers muets ! grottes ! forêt obscure !<br>
+					Vous que le temps épargne ou qu’il peut rajeunir,<br>
+					Gardez de cette nuit, gardez, belle nature,<br>
+					Au moins le souvenir !
+				</p>
+			</li>
+			<li>
+				<p>
+					Qu’il soit dans ton repos, qu’il soit dans tes orages,<br>
+					Beau lac, et dans l’aspect de tes riants coteaux,<br>
+					Et dans ces noirs sapins, et dans ces rocs sauvages<br>
+					Qui pendent sur tes eaux !
+				</p>
+			</li>
+			<li>
+				<p>
+					Qu’il soit dans le zéphyr qui frémit et qui passe,<br>
+					Dans les bruits de tes bords par tes bords répétés,<br>
+					Dans l’astre au front d’argent qui blanchit ta surface<br>
+					De ses molles clartés !
+				</p>
+			</li>
+			<li>
+				<p>
+					Que le vent qui gémit, le roseau qui soupire,<br>
+					Que les parfums légers de ton air embaumé,<br>
+					Que tout ce qu’on entend, l’on voit ou l’on respire,<br>
+					Tout dise : Ils ont aimé !
+				</p>
 			</li>
 		</ol>
 	</main>
-	<footer w3-include-html="fragment/footer.html"></footer>
+	<footer>
+		<h2>Footer</h2>
+	</footer>
 </body>
 
 </html>
@@ -214,10 +252,6 @@ brand : https://fonts.google.com/specimen/Srisakdi
 
 <!--
 COMPONENTS
-
-navbar (always visible, stick to top)
-	feed registrations icon left / account menu icon right
-		https://www.w3schools.com/howto/howto_js_filter_lists.asp
 
 selected feed(s) content
 	https://www.w3schools.com/howto/howto_css_zig_zag_layout.asp
