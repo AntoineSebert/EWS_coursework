@@ -7,16 +7,16 @@ window.onclick = function (event) {
 };
 
 window.onscroll = function () {
-	var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-	var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-	var scrolled = (winScroll / height) * 100;
+	var winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+		height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
+		scrolled = (winScroll / height) * 100;
 	document.getElementById("myBar").style.width = scrolled + "%";
 };
 
 function myFunction() {
-	var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-	var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-	var scrolled = (winScroll / height) * 100;
+	var winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+		height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
+		scrolled = (winScroll / height) * 100;
 	document.getElementById("myBar").style.width = scrolled + "%";
 }
 
@@ -69,4 +69,25 @@ password_field.onkeyup = function () {
 
 	// Validate length
 	password_field.value.length >= 8 ? check(length) : uncheck(length);
+};
+
+document.getElementById("filter_field").onkeyup = function () {
+	var input, filter, ul, li, element;
+	input = document.getElementById('filter_field');
+	filter = input.value.toUpperCase();
+	ul = document.getElementById("content_list");
+	li = ul.getElementsByTagName('li');
+
+	// Loop through all list items, and hide those who don't match the search query
+	for (element in li) {
+		// implement for rss feed
+		/*
+		var txtValue = a.textContent || a.innerText;
+		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			element.style.display = "";
+		} else {
+			element.style.display = "none";
+		}
+		*/
+	}
 };
