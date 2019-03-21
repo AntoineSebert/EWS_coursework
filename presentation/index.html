@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=en>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset=UTF-8>
+	<meta name=viewport content="width=device-width,initial-scale=1">
 	<title>Enterprise Web Systems Coursework</title>
-	<meta name="author" content="Antoine/Anthony Sébert">
-	<meta name="description" content="3-Tier RSS Feed Tool">
-	<meta name="keywords" content="education, coursework, RSS, webdev, 3-tier">
-	<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comfortaa" type="text/css">
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster" type="text/css">
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
-	<link rel="stylesheet" href="style/index.css" type="text/css">
-	<script defer src="script/index.js"></script>
+	<meta name=author content="Antoine/Anthony Sébert">
+	<meta name=description content="3-Tier RSS Feed Tool">
+	<meta name=keywords content="education, coursework, RSS, webdev, 3-tier">
+	<link rel="shortcut icon" href=favicon.ico type="image/vnd.microsoft.icon">
+	<link rel=stylesheet href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin=anonymous>
+	<link rel=stylesheet href="//fonts.googleapis.com/css?family=Comfortaa" type="text/css">
+	<link rel=stylesheet href="//fonts.googleapis.com/css?family=Lobster" type="text/css">
+	<link rel=stylesheet href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
+	<link rel=stylesheet href="style/index.css" type="text/css">
+	<script defer src="script/index.js">
+	</script>
 	<template>
-		<rss version="2.0" type="application/rss+xml">
+		<rss version=2.0 type="application/rss+xml">
 			<channel>
 				<title>RSS Title</title>
 				<description>This is an example of an RSS feed</description>
@@ -58,40 +59,40 @@
 	</header>
 
 	<nav>
-		<a href="#">
+		<a href=# onclick="document.getElementById('subscription_box').style.display='block'">
 			<i class="fas fa-bars fa-2x"></i>
 		</a>
-		<input id=filter_field type="text" name="filter" placeholder="Filter..">
-		<a href="#" class="right" onclick="document.getElementById('loginbox').style.display='block'">
+		<input id=filter_field type=text name=filter placeholder=Filter..>
+		<a href=# class=right onclick="document.getElementById('loginbox').style.display='block'">
 			<i class="far fa-user fa-2x"></i>
 		</a>
-		<div class="progress-container">
-			<div class="progress-bar" id="myBar"></div>
+		<div class=progress-container>
+			<div class=progress-bar id=myBar></div>
 		</div>
 	</nav>
 
-	<div id="loginbox" class="modal">
-		<form class="modal-content-login animate" action="/action_page.php">
-			<h2>Register / Login Form</h2>
-			<div class="container">
-				<div class="input-container">
+	<div id=loginbox class=modal>
+		<form class="modal-content login-content animate">
+			<h2>Register/Login</h2>
+			<div class=container>
+				<div class=input-container>
 					<i class="fas fa-envelope icon"></i>
-					<input class="input-field" type="email" placeholder="Email" name="email" maxlength="256" required>
+					<input class=input-field type=email placeholder=Email name=email maxlength=64 required>
 				</div>
-				<div class="input-container">
+				<div class=input-container>
 					<i class="fas fa-key icon"></i>
-					<input id=password_field class="input-field" type="password" placeholder="Password" name="password" maxlength="256" required>
+					<input id=password_field class=input-field type=password placeholder=Password name=password maxlength=32 required>
 				</div>
 
-				<button type="submit">Login/Register</button>
+				<button id=submit_button type=submit>Login/Register</button>
 				<label>
-					<input type="checkbox" checked="checked" name="remember"> Remember me
+					<input type=checkbox checked=checked name=remember> Remember me
 				</label>
 			</div>
 
 			<div class="container" style="background-color:#f1f1f1">
 				<button type="button" onclick="document.getElementById('loginbox').style.display='none'" class="cancelbtn">Cancel</button>
-				<span class="forgotten_password">Forgot <a href="#">password?</a></span>
+				<span class="forgotten_password">Forgot <a href=#>password?</a></span>
 			</div>
 		</form>
 		<div id="message">
@@ -100,6 +101,16 @@
 			<p id="capital" class="invalid"><i class="fas fa-times"></i> A <b>capital (uppercase)</b> letter</p>
 			<p id="number" class="invalid"><i class="fas fa-times"></i> A <b>number</b></p>
 			<p id="length" class="invalid"><i class="fas fa-times"></i> Minimum <b>8 characters</b></p>
+		</div>
+	</div>
+
+	<div id=subscription_box class=modal>
+		<div class="modal-content animate subscription-content">
+			<h2>Subscribe to an RSS feed</h2>
+			<div class=container>
+				<input type="text" placeholder="Subscribe.." name="subscribe">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</div>
 		</div>
 	</div>
 
@@ -289,14 +300,14 @@
 	<footer>
 		<button id=top_button title="Go to top">Top</button>
 		<div class="pagination">
-			<a href="#">&laquo;</a>
-			<a href="#">1</a>
-			<a class="active" href="#">2</a>
-			<a href="#">3</a>
-			<a href="#">4</a>
-			<a href="#">5</a>
-			<a href="#">6</a>
-			<a href="#">&raquo;</a>
+			<a href=#>&laquo;</a>
+			<a href=#>1</a>
+			<a class="active" href=#>2</a>
+			<a href=#>3</a>
+			<a href=#>4</a>
+			<a href=#>5</a>
+			<a href=#>6</a>
+			<a href=#>&raquo;</a>
 		</div>
 	</footer>
 </body>
@@ -318,6 +329,10 @@ selected feed(s) content
 	https://www.w3schools.com/howto/howto_css_icon_buttons.asp
 	https://www.w3schools.com/howto/howto_css_loader.asp
 	https://www.w3schools.com/howto/howto_css_fading_buttons.asp
+
+https://www.w3schools.com/js/js_ajax_intro.asp
+https://www.w3schools.com/sql/default.asp
+https://www.w3schools.com/php7/default.asp
 
 https://fontawesome.com/icons?d=gallery
 https://en.wikipedia.org/wiki/Representational_state_transfer

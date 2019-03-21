@@ -4,6 +4,7 @@
 @background: #333;
 @content: #666;
 @accent: #ddd;
+@text: firebrick;
 
 * {
 	box-sizing: border-box;
@@ -39,7 +40,7 @@ header {
 	}
 
 	#title-container {
-		color: firebrick;
+		color: @text;
 
 		h1 {
 			padding-top: 80px;
@@ -124,7 +125,7 @@ nav {
 	/* The progress bar (scroll indicator) */
 	.progress-bar {
 		height: 8px;
-		background: #4caf50;
+		background: @text;
 		width: 0%;
 	}
 }
@@ -152,7 +153,7 @@ nav {
 
 	/* Add Zoom Animation */
 	.animate {
-		animation: animatezoom 0.6s
+		animation: animatezoom 0.6s;
 	}
 
 	@keyframes animatezoom {
@@ -166,7 +167,7 @@ nav {
 	}
 
 	/* Modal Content/Box */
-	.modal-content-login {
+	.modal-content {
 		background-color: #fefefe;
 		margin: 5px auto;
 		border: 1px solid #888;
@@ -211,32 +212,70 @@ nav {
 				margin-top: 16px;
 				float: right;
 			}
-
-			button {
-				border: none;
-				cursor: pointer;
-				color: white;
-				margin: 8px 0;
-			}
-
-			button:hover {
-				opacity: 0.8;
-			}
-
-			/* Set a style for all buttons */
-			button[type=submit] {
-				background-color: #4CAF50;
-				padding: 14px 20px;
-				width: 100%;
-			}
-
-			/* Extra styles for the cancel button */
-			.cancelbtn {
-				background-color: #f44336;
-				padding: 10px 18px;
-				width: auto;
-			}
 		}
+	}
+
+	.login-content {
+
+		button {
+			border: none;
+			cursor: pointer;
+			color: white;
+			margin: 8px 0;
+		}
+
+		button:hover {
+			opacity: 0.8;
+		}
+
+		/* Set a style for all buttons */
+		button[type=submit] {
+			background-color: #4CAF50;
+			padding: 14px 20px;
+			width: 100%;
+		}
+
+		/* Extra styles for the cancel button */
+		.cancelbtn {
+			background-color: #f44336;
+			padding: 10px 18px;
+			width: auto;
+		}
+	}
+
+	.subscription-content {
+		input[type=text] {
+			padding: 10px;
+			font-size: 17px;
+			border: 1px solid grey;
+			float: left;
+			min-width: 80%;
+			background: #f1f1f1;
+		}
+
+		button {
+			float: left;
+			width: 20%;
+			padding: 10px;
+			background: #2196F3;
+			color: white;
+			font-size: 17px;
+			border: 1px solid grey;
+			border-left: none;
+			/* Prevent double borders */
+			cursor: pointer;
+		}
+
+		button:hover {
+			background: #0b7dda;
+		}
+	}
+
+	/* Clear floats */
+	.subscription-conten::after {
+		content: "";
+		clear: both;
+		display: table;
 	}
 
 	#message {
@@ -305,6 +344,7 @@ main {
 				font-size: 15px;
 				border-top-left-radius: 5px;
 				border-top-right-radius: 5px;
+				color: @text;
 			}
 
 			/* fix this */
@@ -315,7 +355,7 @@ main {
 
 			.collapsible:after {
 				content: '\002B';
-				color: white;
+				color: @accent;
 				font-weight: bold;
 				float: right;
 				margin-left: 5px;
@@ -384,9 +424,9 @@ footer {
 		/* Remove borders */
 		outline: none;
 		/* Remove outline */
-		background-color: @accent;
+		background-color: @content;
 		/* Set a background color */
-		color: #666;
+		color: @text;
 		/* Text color */
 		cursor: pointer;
 		/* Add a mouse pointer on hover */
@@ -399,7 +439,7 @@ footer {
 	}
 
 	#top_button:hover {
-		background-color: @background;
+		background-color: @accent;
 	}
 
 	.pagination {
@@ -414,7 +454,7 @@ footer {
 		}
 
 		a.active {
-			background-color: dodgerblue;
+			background-color: @text;
 			color: white;
 		}
 

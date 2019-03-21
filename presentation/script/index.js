@@ -1,9 +1,12 @@
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
 	"use strict";
-	var modal = document.getElementById('loginbox');
-	if (event.target === modal) {
-		modal.style.display = "none";
+	var login_modal = document.getElementById('loginbox'),
+		subscription_modal = document.getElementById('subscription_box');
+	if (event.target === login_modal) {
+		login_modal.style.display = "none";
+	} else if (event.target === subscription_modal) {
+		subscription_modal.style.display = "none";
 	}
 };
 
@@ -35,10 +38,6 @@ function change_password_visibility() {
 }
 
 var password_field = document.getElementById("password_field");
-var letter = document.getElementById("letter");
-var capital = document.getElementById("capital");
-var number = document.getElementById("number");
-var length = document.getElementById("length");
 
 // When the user clicks on the password field, show the message box
 password_field.onfocus = function () {
@@ -55,6 +54,10 @@ password_field.onblur = function () {
 // When the user starts to type something inside the password field
 password_field.onkeyup = function () {
 	"use strict";
+	var letter = document.getElementById("letter"),
+		capital = document.getElementById("capital"),
+		number = document.getElementById("number"),
+		length = document.getElementById("length");
 
 	function uncheck(element) {
 		element.classList.replace("valid", "invalid");
@@ -68,13 +71,10 @@ password_field.onkeyup = function () {
 
 	// Validate lowercase letters
 	password_field.value.match(/[a-z]/g) ? check(letter) : uncheck(letter);
-
 	// Validate capital letters
 	password_field.value.match(/[A-Z]/g) ? check(capital) : uncheck(capital);
-
 	// Validate numbers
 	password_field.value.match(/[0-9]/g) ? check(number) : uncheck(number);
-
 	// Validate length
 	password_field.value.length >= 8 ? check(length) : uncheck(length);
 };
@@ -100,10 +100,6 @@ document.getElementById("filter_field").onkeyup = function () {
 
 document.getElementById("top_button").onclick = function () {
 	"use strict";
-	/*
-	document.body.scrollTop = 0; // For Safari
-	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-	*/
 	window.scrollTo({
 		top: 0,
 		left: 0,
