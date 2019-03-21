@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comfortaa" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster" type="text/css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
-	<link rel="stylesheet" href="style/index.min.css" type="text/css">
+	<link rel="stylesheet" href="style/index.css" type="text/css">
 	<script defer src="script/index.js"></script>
 	<template>
 		<rss version="2.0" type="application/rss+xml">
@@ -71,7 +71,7 @@
 	</nav>
 
 	<div id="loginbox" class="modal">
-		<form class="modal-content animate" action="/action_page.php">
+		<form class="modal-content-login animate" action="/action_page.php">
 			<h2>Register / Login Form</h2>
 			<div class="container">
 				<div class="input-container">
@@ -104,139 +104,200 @@
 	</div>
 
 	<main>
-		<ol id=content_list>
+		<ol id=content_list_last_login class=feed_list>
 			<li>
-				<p>
-					Ainsi, toujours poussés vers de nouveaux rivages,<br>
-					Dans la nuit éternelle emporté sans retour,<br>
-					Ne pourrons-nous jamais sur l’océan des âges<br>
-					Jeter l’ancre un seul jour ?
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Ainsi, toujours poussés vers de nouveaux rivages,<br>
+						Dans la nuit éternelle emporté sans retour,<br>
+						Ne pourrons-nous jamais sur l’océan des âges<br>
+						Jeter l’ancre un seul jour ?
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					Ô lac ! l’année à peine a fini sa carrière,<br>
-					Et près des flots chéris qu’elle devait revoir,<br>
-					Regarde ! je viens seul m’asseoir sur cette pierre<br>
-					Où tu la vis s’asseoir !
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Ô lac ! l’année à peine a fini sa carrière,<br>
+						Et près des flots chéris qu’elle devait revoir,<br>
+						Regarde ! je viens seul m’asseoir sur cette pierre<br>
+						Où tu la vis s’asseoir !
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					Tu mugissais ainsi sous ces roches profondes ;<br>
-					Ainsi tu te brisais sur leurs flancs déchirés ;<br>
-					Ainsi le vent jetait l’écume de tes ondes<br>
-					Sur ses pieds adorés.
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Tu mugissais ainsi sous ces roches profondes ;<br>
+						Ainsi tu te brisais sur leurs flancs déchirés ;<br>
+						Ainsi le vent jetait l’écume de tes ondes<br>
+						Sur ses pieds adorés.
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					Un soir, t’en souvient-il ? nous voguions en silence ;<br>
-					On n’entendait au loin, sur l’onde et sous les cieux,<br>
-					Que le bruit des rameurs qui frappaient en cadence<br>
-					Tes flots harmonieux.
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Un soir, t’en souvient-il ? nous voguions en silence ;<br>
+						On n’entendait au loin, sur l’onde et sous les cieux,<br>
+						Que le bruit des rameurs qui frappaient en cadence<br>
+						Tes flots harmonieux.
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					Tout à coup des accents inconnus à la terre<br>
-					Du rivage charmé frappèrent les échos :<br>
-					Le flot plus attentif, et la voix qui m’est chère<br>
-					Laissa tomber ces mots :
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Tout à coup des accents inconnus à la terre<br>
+						Du rivage charmé frappèrent les échos :<br>
+						Le flot plus attentif, et la voix qui m’est chère<br>
+						Laissa tomber ces mots :
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					« Ô temps, suspends ton vol ! et vous, heures propices,<br>
-					» Suspendez votre cours !<br>
-					» Laissez-nous savourer les rapides délices<br>
-					» Des plus beaux de nos jours !
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						« Ô temps, suspends ton vol ! et vous, heures propices,<br>
+						» Suspendez votre cours !<br>
+						» Laissez-nous savourer les rapides délices<br>
+						» Des plus beaux de nos jours !
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					» Assez de malheureux ici-bas vous implorent,<br>
-					» Coulez, coulez pour eux ;<br>
-					» Prenez avec leurs jours les soins qui les dévorent ;<br>
-					» Oubliez les heureux.
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						» Assez de malheureux ici-bas vous implorent,<br>
+						» Coulez, coulez pour eux ;<br>
+						» Prenez avec leurs jours les soins qui les dévorent ;<br>
+						» Oubliez les heureux.
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					» Mais je demande en vain quelques moments encore,<br>
-					» Le temps m’échappe et fuit ;<br>
-					» Je dis à cette nuit : Sois plus lente ; et l’aurore<br>
-					» Va dissiper la nuit.
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						» Mais je demande en vain quelques moments encore,<br>
+						» Le temps m’échappe et fuit ;<br>
+						» Je dis à cette nuit : Sois plus lente ; et l’aurore<br>
+						» Va dissiper la nuit.
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					» Aimons donc, aimons donc ! de l’heure fugitive,<br>
-					» Hâtons-nous, jouissons !<br>
-					» L’homme n’a point de port, le temps n’a point de rive ;<br>
-					» Il coule, et nous passons ! »
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						» Aimons donc, aimons donc ! de l’heure fugitive,<br>
+						» Hâtons-nous, jouissons !<br>
+						» L’homme n’a point de port, le temps n’a point de rive ;<br>
+						» Il coule, et nous passons ! »
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					Temps jaloux, se peut-il que ces moments d’ivresse,<br>
-					Où l’amour à longs flots nous verse le bonheur,<br>
-					S’envolent loin de nous de la même vitesse<br>
-					Que les jours de malheur ?
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Temps jaloux, se peut-il que ces moments d’ivresse,<br>
+						Où l’amour à longs flots nous verse le bonheur,<br>
+						S’envolent loin de nous de la même vitesse<br>
+						Que les jours de malheur ?
+					</p>
+				</div>
 			</li>
 			<li>
-				<p>
-					Hé quoi ! n’en pourrons-nous fixer au moins la trace ?<br>
-					Quoi ! passés pour jamais ? quoi ! tout entiers perdus ?<br>
-					Ce temps qui les donna, ce temps qui les efface,<br>
-					Ne nous les rendra plus ?
-				</p>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Hé quoi ! n’en pourrons-nous fixer au moins la trace ?<br>
+						Quoi ! passés pour jamais ? quoi ! tout entiers perdus ?<br>
+						Ce temps qui les donna, ce temps qui les efface,<br>
+						Ne nous les rendra plus ?
+					</p>
+				</div>
 			</li>
-			<li>
-				<p>
-					Éternité, néant, passé, sombres abîmes,<br>
-					Que faites-vous des jours que vous engloutissez ?<br>
-					Parlez : nous rendrez-vous ces extases sublimes<br>
-					Que vous nous ravissez ?
-				</p>
+			<li class=consulted>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Éternité, néant, passé, sombres abîmes,<br>
+						Que faites-vous des jours que vous engloutissez ?<br>
+						Parlez : nous rendrez-vous ces extases sublimes<br>
+						Que vous nous ravissez ?
+					</p>
+				</div>
 			</li>
-			<li>
-				<p>
-					Ô lacs ! rochers muets ! grottes ! forêt obscure !<br>
-					Vous que le temps épargne ou qu’il peut rajeunir,<br>
-					Gardez de cette nuit, gardez, belle nature,<br>
-					Au moins le souvenir !
-				</p>
+			<li class=consulted>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Ô lacs ! rochers muets ! grottes ! forêt obscure !<br>
+						Vous que le temps épargne ou qu’il peut rajeunir,<br>
+						Gardez de cette nuit, gardez, belle nature,<br>
+						Au moins le souvenir !
+					</p>
+				</div>
 			</li>
-			<li>
-				<p>
-					Qu’il soit dans ton repos, qu’il soit dans tes orages,<br>
-					Beau lac, et dans l’aspect de tes riants coteaux,<br>
-					Et dans ces noirs sapins, et dans ces rocs sauvages<br>
-					Qui pendent sur tes eaux !
-				</p>
+			<li class=consulted>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Qu’il soit dans ton repos, qu’il soit dans tes orages,<br>
+						Beau lac, et dans l’aspect de tes riants coteaux,<br>
+						Et dans ces noirs sapins, et dans ces rocs sauvages<br>
+						Qui pendent sur tes eaux !
+					</p>
+				</div>
 			</li>
-			<li>
-				<p>
-					Qu’il soit dans le zéphyr qui frémit et qui passe,<br>
-					Dans les bruits de tes bords par tes bords répétés,<br>
-					Dans l’astre au front d’argent qui blanchit ta surface<br>
-					De ses molles clartés !
-				</p>
+			<li class=consulted>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Qu’il soit dans le zéphyr qui frémit et qui passe,<br>
+						Dans les bruits de tes bords par tes bords répétés,<br>
+						Dans l’astre au front d’argent qui blanchit ta surface<br>
+						De ses molles clartés !
+					</p>
+				</div>
 			</li>
-			<li>
-				<p>
-					Que le vent qui gémit, le roseau qui soupire,<br>
-					Que les parfums légers de ton air embaumé,<br>
-					Que tout ce qu’on entend, l’on voit ou l’on respire,<br>
-					Tout dise : Ils ont aimé !
-				</p>
+			<li class=consulted>
+				<button class="collapsible">Open Collapsible</button>
+				<div class="content">
+					<p>
+						Que le vent qui gémit, le roseau qui soupire,<br>
+						Que les parfums légers de ton air embaumé,<br>
+						Que tout ce qu’on entend, l’on voit ou l’on respire,<br>
+						Tout dise : Ils ont aimé !
+					</p>
+				</div>
 			</li>
 		</ol>
+		<ol id=content_list_past class=feed_list>
+		</ol>
 	</main>
+
 	<footer>
-		<h2>Footer</h2>
+		<button id=top_button title="Go to top">Top</button>
+		<div class="pagination">
+			<a href="#">&laquo;</a>
+			<a href="#">1</a>
+			<a class="active" href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+			<a href="#">&raquo;</a>
+		</div>
 	</footer>
 </body>
 
@@ -254,19 +315,9 @@ brand : https://fonts.google.com/specimen/Srisakdi
 COMPONENTS
 
 selected feed(s) content
-	https://www.w3schools.com/howto/howto_css_zig_zag_layout.asp
-	https://www.w3schools.com/howto/howto_css_next_prev.asp
-	https://www.w3schools.com/howto/howto_css_pagination.asp
-	https://www.w3schools.com/howto/howto_js_read_more.asp
-	https://www.w3schools.com/howto/howto_css_download_button.asp
-	https://www.w3schools.com/howto/howto_css_notification_button.asp
 	https://www.w3schools.com/howto/howto_css_icon_buttons.asp
-	https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
-	https://www.w3schools.com/howto/howto_js_collapsible.asp
 	https://www.w3schools.com/howto/howto_css_loader.asp
-
-https://www.w3schools.com/howto/howto_css_animate_buttons.asp
-https://www.w3schools.com/howto/howto_css_fading_buttons.asp
+	https://www.w3schools.com/howto/howto_css_fading_buttons.asp
 
 https://fontawesome.com/icons?d=gallery
 https://en.wikipedia.org/wiki/Representational_state_transfer
