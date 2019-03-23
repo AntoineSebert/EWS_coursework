@@ -246,11 +246,28 @@ nav {
 
 	.subscription-content {
 		button {
-			width: 20%;
 			padding: 10px;
 			background: #2196F3;
 			border-left: none;
 			/* Prevent double borders */
+		}
+
+		ul {
+			list-style: none;
+
+			li {
+				p {
+					display: inline-block;
+				}
+
+				button {
+					background-color: transparent;
+				}
+
+				i {
+					color: @text;
+				}
+			}
 		}
 	}
 
