@@ -5,8 +5,6 @@ if(!isset($index) || !$index) {
 	exit();
 }
 
-namespace enterprise_web_systems_coursework;
-
 function check_https() {
 	if($_SERVER["HTTPS"] != "on") {
 		header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
