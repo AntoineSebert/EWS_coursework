@@ -56,6 +56,24 @@ user = base/{user} (first part of email)
 	ALL EXCEPT HEAD/GET
 		response
 			405
+
+database
+	User
+		email : string unique PK
+		password_hash : string
+		salt : datetime
+		subscriptions : array feed FK
+		last_connection : datetime
+	Feed
+		url : string unique PK
+		publications : array publications FK
+	Publication
+		release : datetime
+		title : string
+		description : string
+		content : string
+
+https://app.netlify.com/sites/ewsc/overview
 */
 
 // https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
@@ -66,91 +84,16 @@ user = base/{user} (first part of email)
 
 namespace enterprise_web_systems_coursework;
 
-if($_SERVER["HTTPS"] != "on") {
-	header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-	exit();
-}
-
-if($_SERVER['REQUEST_METHOD'] != 'POST'
-	&& $_SERVER['REQUEST_METHOD'] != 'GET'
-	&& $_SERVER['REQUEST_METHOD'] != 'PUT'
-	&& $_SERVER['REQUEST_METHOD'] != 'DELETE'
-) {
-	// send error 405
-	exit();
-}
-
-trait html_content{
-	public function as_html(): string {}
-}
-
-class user extends html_content {
-	private email = '';
-	private password_hash = '';
-	private salt = '';
-	private $old_feed = array();
-	private $new_feed = array();
-	private $last_poll = time();
-
-	function __construct(string $_email, string $_password_hash, string $_salt) {
-		$email = $_email;
-		$password_hash = $_password_hash;
-		$salt = $_salt;
-	}
-
-	public function get_email(): string {
-		return self::email;
-	}
-
-	public function get_new_feed(): string {
-		return self::new_feed;
-	}
-
-	public function get_new_feed(int $index): string {
-		$value = new stdClass();
-		try {
-			$value = self::new_feed[$index];
-		}
-		catch(OutOfBoundsException $e) {
-			echo($e);
-			echo(count(self::new_feed)." < ".$index);
-		}
-		finally {
-			return $value;
-		}
-	}
-
-	public function get_old_feed(): string {
-		return self::old_feed;
-	}
-
-	public function get_old_feed(int $index): string {
-		$value = new stdClass();
-		try {
-			$value = self::old_feed[$index];
-		}
-		catch(OutOfBoundsException $e) {
-			echo($e);
-			echo(count(self::new_feed)." < ".$index);
-		}
-		finally {
-			return $value;
-		}
-	}
-}
-
-
-class feed extends html_content {
-
-}
-
-class publication extends html_content {
-
-}
+$index = true;
+$directory = "application";
+require($directory."/check.php");
+check_https();
+check_url();
+// build array in functino of url
+check_method(array());
 
 session_start([
 	'cookie_lifetime' => 86400,
 ]);
 
-htmlspecialchars($_COOKIE["name"])
-$_SESSION
+//$_SESSION
