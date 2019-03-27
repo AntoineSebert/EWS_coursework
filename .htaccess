@@ -1,0 +1,30 @@
+# ErrorDocument 404 /error_pages/404.html # pas l'temps d'niaiser
+
+AddHandler server-parsed .html # SSI
+IndexIgnore * # hide stuff
+
+# deny when filename starts with a dot (.htaccess being automatically inaccessible)
+<FilesMatch "^\.">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+
+# deny extensions
+<FilesMatch "\.(ini|md|log|sh)$">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+
+# hide logic, data and stuff
+RedirectMatch 404 ^/application/.*$
+RedirectMatch 404 ^/data/.*$
+RedirectMatch 404 ^/.git/.*$
+
+## enable Mod Rewrite
+RewriteEngine On
+RewriteBase /
+
+# redirect everything that does not exist to index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]

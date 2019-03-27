@@ -7,21 +7,21 @@
 // https://secure.php.net/manual/en/refs.crypto.php
 
 $index = true;
-$app_directory = "application";
+$app_directory = "application/";
+require_once($app_directory . 'check.php');
 
-echo(file_exists($app_directory."/check.php"));
-require($app_directory."/check.php");
+check_method(
+	strlen($_SERVER['REQUEST_URI']) == 1 ?
+	array("GET", "POST") : array("GET", "PUT", "DELETE")
+);
 
-check_https();
-check_url();
-// build array in function of url
-//check_method(array());
-
-/*
 session_start([
 	'cookie_lifetime' => 86400,
 ]);
-*/
+
+// check if user exists
+//$uri = substr($str, $_SERVER['REQUEST_URI']);
+// check if user is connected
 //$_SESSION
 ?>
 
