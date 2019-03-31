@@ -1,23 +1,17 @@
 <?php
 /*
-	FONTS headers : https://fonts.google.com/specimen/Lobster body : https://fonts.google.com/specimen/Comfortaa brand : https://fonts.google.com/specimen/Srisakdi
-
 	https://www.w3schools.com/howto/howto_css_fading_buttons.asp
 	https://www.w3schools.com/HTML/html5_webworkers.asp
-
 	https://www.w3schools.com/js/js_ajax_intro.asp
-	https://www.w3schools.com/sql/default.asp
 
 	https://fontawesome.com/icons?d=gallery
 */
 
 // https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
 // https://secure.php.net/manual/en/security.database.php
-// https://secure.php.net/manual/en/refs.crypto.php
-
-// DATE_ATOM
-// DATE_RSS
-// DATE_W3C
+// https://www.w3schools.com/sql/default.asp
+// https://www.php.net/manual/en/book.pdo.php
+// DATE_ATOM, DATE_RSS, DATE_W3C
 
 $directory = array(
 	"model" => "data/",

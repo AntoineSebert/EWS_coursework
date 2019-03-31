@@ -30,13 +30,14 @@ function sign() : int {
 	} elseif(isset($_POST["email"]) && isset($_POST["password"])) {
 		if(validate_email($_POST["email"]) && validate_password($_POST["password"])) {
 			if(/*PDO check email exists*/true) {
-				if(/*PDO hash(password + salt) match*/true) {
+				if(password_verify($_POST["password"], ""/* PDO hash*/)) {
 					remember();
 					return 200;
 				}
 				return 401;
 			}
 			// PDO create account
+			password_hash($_POST["email"], PASSWORD_DEFAULT);
 			return 201;
 		}
 	}
