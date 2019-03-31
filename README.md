@@ -33,12 +33,19 @@ The software you develop must adhere to the design guidelines discussed during t
 
 ## Requirements
 
+Apache HTTP server
 PHP7 with PDO
-HTTP server supported HTTPS and HTTP/2
 
 ## Routes
 
 base = http://csdm-webdev.rgu.ac.uk/1705851/enterprise_web_systems_coursework
+	GET
+		handler location
+			index.php
+		field
+			ignored
+		response
+			200
 	POST
 		handler location
 			sign.php
@@ -71,7 +78,7 @@ user = base/{user} (first part of email)
 		field
 			feed
 		response
-			200 = already exists
+			200 = already subscribed
 			201 = inserted
 			400 = not an rss feed
 			401 = not connected or wrong user
@@ -86,7 +93,6 @@ user = base/{user} (first part of email)
 			200 = deleted
 			400 = not a feed
 			401 = not connected or wrong user
-			404 = feed not found
 
 	ALL EXCEPT HEAD/GET
 		response

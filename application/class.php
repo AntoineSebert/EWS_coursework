@@ -1,12 +1,4 @@
 <?
-
-if(!isset($index) || !$index) {
-	http_response_code(404);
-	exit();
-}
-
-namespace enterprise_web_systems_coursework;
-
 class user extends html_content {
 	/* ATTRIBUTES */
 		private $email = '';
@@ -25,12 +17,12 @@ class user extends html_content {
 			$this->salt = $_salt;
 			$this->last_poll = time();
 		}
-		public function get_email(): string { return $this->email; }
+		public function get_email() : string { return $this->email; }
 		/*
-		public function get_new_feed(): string {
+		public function get_new_feed() : string {
 			return $this->new_feed;
 		}
-		public function get_new_feed_publication(int $index): string {
+		public function get_new_feed_publication(int $index) : string {
 			$value = new stdClass();
 			try {
 				$value = $this->new_feed[$index];
@@ -43,10 +35,10 @@ class user extends html_content {
 				return $value;
 			}
 		}
-		public function get_old_feed(): string {
+		public function get_old_feed() : string {
 			return $this->old_feed;
 		}
-		public function get_old_feed_publication(int $index): string {
+		public function get_old_feed_publication(int $index) : string {
 			$value = new stdClass();
 			try {
 				$value = $this->old_feed[$index];
@@ -77,39 +69,39 @@ class feed implements ArrayAccess, Iterator, JsonSerializable {
 				$this->url = $_url;
 				$this->protocol = $_protocol;
 			}
-			public function get_protocol(): Pair { return $this->protocol; }
-			public function get_url(): string { return $this->url; }
+			public function get_protocol() : Pair { return $this->protocol; }
+			public function get_url() : string { return $this->url; }
 		// ArrayAccess
-			public function offsetExists(mixed $offset): bool { return isset($this->publications[$offset]); }
-			public function offsetGet(mixed $offset): mixed {
+			public function offsetExists(mixed $offset) : bool { return isset($this->publications[$offset]); }
+			public function offsetGet(mixed $offset) : mixed {
 				return isset($this->publications[$offset]) ? $this->publications[$offset] : null;
 			}
-			public function offsetSet(mixed $offset, mixed $value): void {
+			public function offsetSet(mixed $offset, mixed $value) : void {
 				if (is_null($offset)) {
 					$this->publications[] = $value;
 				} else {
 					$this->publications[$offset] = $value;
 				}
 			}
-			public function offsetUnset(mixed $offset): void { unset($this->publications[$offset]); }
+			public function offsetUnset(mixed $offset) : void { unset($this->publications[$offset]); }
 		// Iterator
 			public function current() : mixed {
 				var_dump(__METHOD__);
 				return $this->publications[$this->position];
 			}
-			public function key(): scalar {
+			public function key() : scalar {
 				var_dump(__METHOD__);
 				return $this->position;
 			}
-			public function next(): void {
+			public function next() : void {
 				var_dump(__METHOD__);
 				++$this->position;
 			}
-			public function rewind(): void {
+			public function rewind() : void {
 				var_dump(__METHOD__);
 				$this->position = 0;
 			}
-			public function valid(): bool {
+			public function valid() : bool {
 				var_dump(__METHOD__);
 				return isset($this->publications[$this->position]);
 			}
@@ -121,9 +113,9 @@ class publication implements JsonSerializable {
 	/* ATTRIBUTES */
 	/* MEMBERS */
 		// custom
-			public function as_html(): string {}
+			public function as_html() : string {}
 		// JsonSerializable
-			public function jsonSerialize(): mixed {
+			public function jsonSerialize() : mixed {
 				return "";
 			}
 }

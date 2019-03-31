@@ -6,23 +6,69 @@
 // https://secure.php.net/manual/en/internals2.pdo.php
 // https://secure.php.net/manual/en/refs.crypto.php
 
-$index = true;
-$app_directory = "application/";
-require_once($app_directory . 'check.php');
-
-check_method(
-	strlen($_SERVER['REQUEST_URI']) == 1 ?
-	array("GET", "POST") : array("GET", "PUT", "DELETE")
+$directory = array(
+	"model" => "data/",
+	"vue" => "presentation/",
+	"controller" => "application/"
 );
 
-session_start([
-	'cookie_lifetime' => 86400,
-]);
+function redirect($url, $statusCode = 303) {
+	header('Location: ' . $url, true, $statusCode);
+	die();
+}
 
-// check if user exists
-//$uri = substr($str, $_SERVER['REQUEST_URI']);
-// check if user is connected
-//$_SESSION
+require_once($directory["controller"] . 'check.php');
+
+$allowed_methods = strlen($_SERVER['REQUEST_URI']) == 1 ? array("GET", "POST") : array("GET", "PUT", "DELETE");
+if(check_method($allowed_methods) == false) {
+	http_response_code(405);
+	header('Allow: '.implode(",", $allowed_methods));
+	exit();
+}
+
+session_start(['cookie_lifetime' => 86400]);
+
+if(strlen($_SERVER['REQUEST_URI']) == 1) {
+	if($_SERVER['REQUEST_METHOD'] === "POST") {
+		require_once($directory["controller"] . 'sign.php');
+		$result = sign();
+		http_response_code($result);
+		if($result !== 401) {
+			http_response_code($result);
+			if($_POST["remember"] === true) {
+				$_SESSION["email"] = $_POST["email"];
+				$_SESSION["password"] = $_POST["password"];
+			}
+			redirect('/' . explode('@', $_POST["email"])[0]);
+		}
+	}
+} else {
+	if(isset($_SESSION["email"]) && isset($_SESSION["password"])) {
+		if(/* feed is an actual rss feed*/true) {
+			switch($_SERVER['REQUEST_METHOD']) {
+				case "PUT":
+					require_once($directory["controller"] . 'subscribe.php');
+					$result = add_subscription();
+					http_response_code($result);
+					// switch
+					break;
+				case "DELETE":
+					require_once($directory["controller"] . 'subscribe.php');
+					http_response_code(remove_subscription());
+					break;
+				default:
+					//get
+			}
+		} else {
+			http_response_code(400);
+			exit();
+		}
+	} else {
+		http_response_code(401);
+		exit();
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +79,7 @@ session_start([
 	<meta name=viewport content="width=device-width,initial-scale=1">
 	<title>Enterprise Web Systems Coursework</title>
 	<meta name=author content="Antoine/Anthony Sébert">
-	<link type="text/plain" rel=author href="http://domain/humans.txt" /> <!-- php insert domain -->
+	<link type="text/plain" rel=author href="<?=$_SERVER['SERVER_NAME']?>/humans.txt" />
 	<meta name=description content="3-Tier RSS Feed Tool">
 	<meta name=keywords content="education, coursework, RSS, webdev, 3-tier">
 	<link rel="shortcut icon" href=favicon.ico type="image/vnd.microsoft.icon">
@@ -52,7 +98,6 @@ session_start([
 				<lastBuildDate><time datetime="2008-02-14 20:00">Mon, 06 Sep 2010 00:01:00 +0000</time></lastBuildDate>
 				<pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
 				<ttl>1800</ttl>
-
 				<item>
 					<title>Example entry</title>
 					<description>Here is some text containing an interesting description.</description>
@@ -99,7 +144,7 @@ session_start([
 	</nav>
 
 	<div id=loginbox class=modal>
-		<form class="modal-content login-content animate">
+		<form class="modal-content login-content animate" method=post>
 			<h2>Register/Login</h2>
 			<div class=container>
 				<div class=input-container>
@@ -363,7 +408,9 @@ session_start([
 	</footer>
 </body>
 
-</html> <!-- FONTS headers : https://fonts.google.com/specimen/Lobster body : https://fonts.google.com/specimen/Comfortaa brand : https://fonts.google.com/specimen/Srisakdi -->
+</html>
+
+<!-- FONTS headers : https://fonts.google.com/specimen/Lobster body : https://fonts.google.com/specimen/Comfortaa brand : https://fonts.google.com/specimen/Srisakdi -->
 
 <!--
 https://www.w3schools.com/howto/howto_css_fading_buttons.asp
@@ -371,8 +418,6 @@ https://www.w3schools.com/HTML/html5_webworkers.asp
 
 https://www.w3schools.com/js/js_ajax_intro.asp
 https://www.w3schools.com/sql/default.asp
-https://www.w3schools.com/php7/default.asp
 
 https://fontawesome.com/icons?d=gallery
-https://en.wikipedia.org/wiki/Representational_state_transfer
 -->

@@ -1,10 +1,12 @@
-<?
+<?php
 
-if(!isset($index) || !$index) {
-	http_response_code(404);
-	exit();
+function sign() : int {
+	// $_POST["EMAIL"];
+	// $_POST["PASSWORD"];
+	if(/*PDO email exists*/true) {
+		return /*PDO hash(password + salt) match ? 200 : 401*/200;
+	} else {
+		// PDO create account
+		return 201;
+	}
 }
-
-namespace enterprise_web_systems_coursework;
-
-//$_POST[];

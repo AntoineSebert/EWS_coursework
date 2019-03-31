@@ -1,16 +1,14 @@
 <?php
 
-if(!isset($index) || !$index) {
-	http_response_code(404);
-	exit();
-}
-
-function check_method(array $allowed_methods) {
+function check_method(array $allowed_methods) : bool {
 	foreach($allowed_methods as $method) {
 		if($_SERVER['REQUEST_METHOD'] == $method)
-			return;
+			return true;
 	}
-	http_response_code(405);
-	header('Allow: '.implode(",", $allowed_methods));
-	exit();
+	return false;
+}
+
+function check_user_exists(string $username) : bool {
+	// PDO request
+
 }
