@@ -56,7 +56,7 @@ base = http://csdm-webdev.rgu.ac.uk/1705851/enterprise_web_systems_coursework
 			201 = sign up
 			401 = if email exists but password does not match
 
-	ALL EXCEPT HEAD/GET
+	ALL EXCEPT HEAD
 		response
 			405
 
@@ -72,29 +72,19 @@ user = base/{user} (first part of email)
 			401 = not connected or wrong user
 			404 = page not found
 
-	PUT
+	POST
 		handler location
 			subscribe.php
 		field
-			feed
+			action, feed
 		response
-			200 = already subscribed
+			200 = already subscribed OR deleted/does not exist
 			201 = inserted
 			400 = not an rss feed
 			401 = not connected or wrong user
 			404 = feed not found
 
-	DELETE
-		handler location
-			subscribe.php
-		field
-			feed
-		response
-			200 = deleted
-			400 = not a feed
-			401 = not connected or wrong user
-
-	ALL EXCEPT HEAD/GET
+	ALL EXCEPT HEAD
 		response
 			405
 
