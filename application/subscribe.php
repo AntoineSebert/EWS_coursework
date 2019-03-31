@@ -1,17 +1,33 @@
 <?php
 
-function add_subscription() : int {
-	if(/* feed exists*/true) {
-		// request to database once all other checks have been performed (reduce DB load)
-		if(/* PDO feeds exists for user*/false) {
-			return 200;
-		} else {
-			// PDO insert
-			return 201;
+/* QUICKCHECKS */
+function is_xml(string $candidate) : bool {
+	try {
+		$rss = new SimpleXmlElement($candidate);
+		return true;
+	}
+	catch(Exception $e){
+		return false;
+	}
+}
+
+/* PRIMARY */
+function manage_subscription() : int {
+	if(isset($_POST["action"]) && isset($_POST["feed"])) {
+		if(($_POST["action"] === "remove" || $_POST["action"] === "add") && is_xml($_POST["feed"])) {
+			return $_POST["action"] === "add" ? add_subscription() : remove_subscription();
 		}
+	}
+	return 400;
+}
+
+/* SECONDARY */
+function add_subscription() : int {
+	if(/* PDO feeds exists for user*/false) {
+		return 200;
 	} else {
-		// feed does not exists
-		return 404;
+		// PDO insert
+		return 201;
 	}
 }
 

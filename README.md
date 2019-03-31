@@ -82,7 +82,6 @@ user = base/{user} (first part of email)
 			201 = inserted
 			400 = not an rss feed
 			401 = not connected or wrong user
-			404 = feed not found
 
 	ALL EXCEPT HEAD
 		response

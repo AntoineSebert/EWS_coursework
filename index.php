@@ -1,10 +1,23 @@
 <?php
+/*
+	FONTS headers : https://fonts.google.com/specimen/Lobster body : https://fonts.google.com/specimen/Comfortaa brand : https://fonts.google.com/specimen/Srisakdi
+
+	https://www.w3schools.com/howto/howto_css_fading_buttons.asp
+	https://www.w3schools.com/HTML/html5_webworkers.asp
+
+	https://www.w3schools.com/js/js_ajax_intro.asp
+	https://www.w3schools.com/sql/default.asp
+
+	https://fontawesome.com/icons?d=gallery
+*/
 
 // https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
-// https://secure.php.net/manual/en/context.http.php
 // https://secure.php.net/manual/en/security.database.php
-// https://secure.php.net/manual/en/internals2.pdo.php
 // https://secure.php.net/manual/en/refs.crypto.php
+
+// DATE_ATOM
+// DATE_RSS
+// DATE_W3C
 
 $directory = array(
 	"model" => "data/",
@@ -12,60 +25,35 @@ $directory = array(
 	"controller" => "application/"
 );
 
-function redirect($url, $statusCode = 303) {
-	header('Location: ' . $url, true, $statusCode);
+function redirect($url, $status_code = 303) {
+	header('Location: ' . $url, true, $status_code);
 	die();
 }
 
-require_once($directory["controller"] . 'check.php');
-
-$allowed_methods = strlen($_SERVER['REQUEST_URI']) == 1 ? array("GET", "POST") : array("GET", "PUT", "DELETE");
-if(check_method($allowed_methods) == false) {
-	http_response_code(405);
-	header('Allow: '.implode(",", $allowed_methods));
-	exit();
-}
+require_once($directory["controller"] . 'database.php');
+require_once($directory["controller"] . 'sign.php');
 
 session_start(['cookie_lifetime' => 86400]);
 
 if(strlen($_SERVER['REQUEST_URI']) == 1) {
-	if($_SERVER['REQUEST_METHOD'] === "POST") {
-		require_once($directory["controller"] . 'sign.php');
+	if($_SERVER['REQUEST_METHOD'] == "POST") {
 		$result = sign();
 		http_response_code($result);
-		if($result !== 401) {
-			http_response_code($result);
-			if($_POST["remember"] === true) {
-				$_SESSION["email"] = $_POST["email"];
-				$_SESSION["password"] = $_POST["password"];
-			}
+		if($result != 400 && $result != 401) {
 			redirect('/' . explode('@', $_POST["email"])[0]);
 		}
 	}
 } else {
-	if(isset($_SESSION["email"]) && isset($_SESSION["password"])) {
-		if(/* feed is an actual rss feed*/true) {
-			switch($_SERVER['REQUEST_METHOD']) {
-				case "PUT":
-					require_once($directory["controller"] . 'subscribe.php');
-					$result = add_subscription();
-					http_response_code($result);
-					// switch
-					break;
-				case "DELETE":
-					require_once($directory["controller"] . 'subscribe.php');
-					http_response_code(remove_subscription());
-					break;
-				default:
-					//get
-			}
-		} else {
-			http_response_code(400);
-			exit();
+	if($_SERVER['REQUEST_METHOD'] == "POST") {
+		$result = sign();
+		http_response_code($result);
+		if($result != 400 && $result != 401) {
+			require_once($directory["controller"] . 'subscribe.php');
+			http_response_code(manage_subscription());
 		}
-	} else {
+	} elseif(!is_signed_in()) {
 		http_response_code(401);
-		exit();
+		redirect('/');
 	}
 }
 
@@ -83,7 +71,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 	<meta name=description content="3-Tier RSS Feed Tool">
 	<meta name=keywords content="education, coursework, RSS, webdev, 3-tier">
 	<link rel="shortcut icon" href=favicon.ico type="image/vnd.microsoft.icon">
-	<link rel=stylesheet href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin=anonymous>
+	<link rel=stylesheet href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity=sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr crossorigin=anonymous>
 	<link rel=stylesheet href="//fonts.googleapis.com/css?family=Comfortaa" type="text/css">
 	<link rel=stylesheet href="//fonts.googleapis.com/css?family=Lobster" type="text/css">
 	<link rel=stylesheet href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
@@ -114,7 +102,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 <body>
 	<header>
 		<div id=credit-badge>
-			<a href="https://unsplash.com/@genessapana?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Genessa Panainte">
+			<a href="https://unsplash.com/@genessapana?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target=_blank rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Genessa Panainte">
 				<span style="display:inline-block;padding:2px 3px">
 					<svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32">
 						<title>unsplash-logo</title>
@@ -409,15 +397,3 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 </body>
 
 </html>
-
-<!-- FONTS headers : https://fonts.google.com/specimen/Lobster body : https://fonts.google.com/specimen/Comfortaa brand : https://fonts.google.com/specimen/Srisakdi -->
-
-<!--
-https://www.w3schools.com/howto/howto_css_fading_buttons.asp
-https://www.w3schools.com/HTML/html5_webworkers.asp
-
-https://www.w3schools.com/js/js_ajax_intro.asp
-https://www.w3schools.com/sql/default.asp
-
-https://fontawesome.com/icons?d=gallery
--->
