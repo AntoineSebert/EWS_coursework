@@ -6,12 +6,12 @@
 
 	https://fontawesome.com/icons?d=gallery
 */
-
-// https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
-// https://secure.php.net/manual/en/security.database.php
-// https://www.w3schools.com/sql/default.asp
-// https://www.php.net/manual/en/book.pdo.php
-// DATE_ATOM, DATE_RSS, DATE_W3C
+/*
+	https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
+	https://www.w3schools.com/sql/default.asp
+	https://www.php.net/manual/en/book.pdo.php
+	DATE_ATOM, DATE_RSS, DATE_W3C
+*/
 
 $directory = array(
 	"model" => "data/",
@@ -19,7 +19,7 @@ $directory = array(
 	"controller" => "application/"
 );
 
-function redirect($url, $status_code = 303) {
+function redirect(string $url, int $status_code = 303) {
 	header('Location: ' . $url, true, $status_code);
 	die();
 }
@@ -45,7 +45,10 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			require_once($directory["controller"] . 'subscribe.php');
 			http_response_code(manage_subscription());
 		}
-	} elseif(!is_signed_in()) {
+	} elseif(is_signed_in()) {
+		require_once($directory["controller"] . 'load.php');
+		// display all or subset
+	} else {
 		http_response_code(401);
 		redirect('/');
 	}
