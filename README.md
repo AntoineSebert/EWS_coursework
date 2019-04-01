@@ -38,7 +38,7 @@ PHP7 with PDO
 
 ## Routes
 
-base = http://csdm-webdev.rgu.ac.uk/1705851/enterprise_web_systems_coursework
+base = http://ewsc
 	GET
 		handler location
 			index.php
@@ -65,7 +65,7 @@ user = base/{user} (first part of email)
 		handler location
 			load.php
 		field
-			all(default)/page/subscriptions list
+			feed (all(default) / page) + subscriptions
 		response
 			200
 			400 = page in not a number
@@ -88,6 +88,9 @@ user = base/{user} (first part of email)
 			405
 
 ## Database
+
+### Design
+
 	User
 		email : string unique PK
 		password_hash : string
@@ -102,3 +105,39 @@ user = base/{user} (first part of email)
 		title : string
 		description : string
 		content : string
+
+### Creation script
+
+```sql
+.
+```
+
+### Users
+
+#### Read operations
+
+name : ewsc_r
+password : t9x.g}sTL|EF
+
+##### Operations
+
+data : `SELECT`
+structure : `EXECUTE`
+
+#### Read/write operations
+
+name : ewsc_w
+password : \IiT42_:@VUW
+
+##### Operations
+
+data : `INSERT`, `UPDATE`, `DELETE`
+structure : `EXECUTE`
+
+## User interface
+
+### FONTS
+
+headers : https://fonts.google.com/specimen/Lobster
+body : https://fonts.google.com/specimen/Comfortaa
+brand : https://fonts.google.com/specimen/Srisakdi
