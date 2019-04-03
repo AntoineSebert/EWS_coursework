@@ -8,9 +8,10 @@
 */
 /*
 	https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
-	https://www.w3schools.com/sql/default.asp
-	https://www.php.net/manual/en/book.pdo.php
+	https://www.w3schools.com/sql/sql_ref_keywords.asp
+	https://www.w3resource.com/mysql/mysql-procedure.php
 	DATE_ATOM, DATE_RSS, DATE_W3C
+	htmlspecialchars()
 */
 
 $directory = array(
@@ -80,7 +81,9 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 				<title>RSS Title</title>
 				<description>This is an example of an RSS feed</description>
 				<a>http://www.example.com/main.html</a>
-				<lastBuildDate><time datetime="2008-02-14 20:00">Mon, 06 Sep 2010 00:01:00 +0000</time></lastBuildDate>
+				<lastBuildDate>
+					<time datetime="2008-02-14 20:00">Mon, 06 Sep 2010 00:01:00 +0000</time>
+				</lastBuildDate>
 				<pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
 				<ttl>1800</ttl>
 				<item>

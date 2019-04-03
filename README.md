@@ -24,11 +24,8 @@ Your system will need to implement the following key features:
 The software you develop must adhere to the design guidelines discussed during the course of the module:
 
 * Appropriate use of the MVC design pattern
-
 * Adherence to PAD layers within the 3-tier architecture
-
 * Proper decomposition of responsibilities into the appropriate tier elements
-
 * Should be asynchronous at the front-end and implementation agnostic at the back-end
 
 ## Requirements
@@ -37,7 +34,7 @@ Apache HTTP server
 PHP7 with PDO
 
 ## Routes
-
+`
 base = http://ewsc
 	GET
 		handler location
@@ -59,7 +56,8 @@ base = http://ewsc
 	ALL EXCEPT HEAD
 		response
 			405
-
+`
+`
 user = base/{user} (first part of email)
 	GET
 		handler location
@@ -86,27 +84,39 @@ user = base/{user} (first part of email)
 	ALL EXCEPT HEAD
 		response
 			405
+`
 
 ## Database
 
 ### Design
 
-	User
-		email : string unique PK
-		password_hash : string
-		salt : datetime
-		subscriptions : array feed FK
-		last_connection : datetime
-	Feed
-		url : string unique PK
-		publications : array publications FK
-	Publication
-		release : datetime
-		title : string
-		description : string
-		content : string
+`
+users
+	email : VARCHAR(64) PK
+	hash : VARCHAR(255)
+	last_connection : TIMESTAMP()
+subscriptions
+	id : PK
+	feed_url : VARCHAR(255) FK
+	user_email : VARCHAR(64) FK
+feeds
+	url : VARCHAR(255) PK
+publications
+	id : PK
+	feed_url : feed FK
+	release_date : TIMESTAMP()
+	title : TINYTEXT
+	description : TEXT
+	content : MEDIUMTEXT
+`
 
 ### Creation script
+
+```sql
+.
+```
+
+### Stored procedures
 
 ```sql
 .
