@@ -10,6 +10,10 @@
 	https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
 	https://www.w3schools.com/sql/sql_ref_keywords.asp
 	https://www.w3resource.com/mysql/mysql-procedure.php
+	https://www.w3schools.com/xml/schema_intro.asp
+	https://www.w3schools.com/xml/xsl_intro.asp
+	https://www.w3schools.com/xml/xpath_intro.asp
+	https://www.w3schools.com/xml/xquery_intro.asp
 	DATE_ATOM, DATE_RSS, DATE_W3C
 	htmlspecialchars()
 */
@@ -44,11 +48,11 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 		http_response_code($result);
 		if($result != 400 && $result != 401) {
 			require_once($directory["controller"] . 'subscribe.php');
-			http_response_code(manage_subscription());
+			http_response_code(manage_subscriptions());
 		}
 	} elseif(is_signed_in()) {
 		require_once($directory["controller"] . 'load.php');
-		// display all or subset
+		$publications = get_publications();
 	} else {
 		http_response_code(401);
 		redirect('/');

@@ -91,19 +91,17 @@ user = base/{user} (first part of email)
 ### Design
 
 `
+feeds
+	url : VARCHAR(255) PK
 users
 	email : VARCHAR(64) PK
 	hash : VARCHAR(255)
-	last_connection : TIMESTAMP()
+	last_connection : TIMESTAMP() ON UPDATE CURRENT TIMESTAMP
 subscriptions
-	id : PK
-	feed_url : VARCHAR(255) FK
-	user_email : VARCHAR(64) FK
-feeds
-	url : VARCHAR(255) PK
+	feed_url : VARCHAR(255) PK INDEX FK ON DELETE CASCADE
+	user_email : VARCHAR(64) PK INDEX FK ON DELETE CASCADE
 publications
-	id : PK
-	feed_url : feed FK
+	feed_url : feed FK ON DELETE CASCADE
 	release_date : TIMESTAMP()
 	title : TINYTEXT
 	description : TEXT

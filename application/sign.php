@@ -29,15 +29,14 @@ function sign() : int {
 		return 200;
 	} elseif(isset($_POST["email"]) && isset($_POST["password"])) {
 		if(validate_email($_POST["email"]) && validate_password($_POST["password"])) {
-			if(/*PDO check email exists*/true) {
-				if(password_verify($_POST["password"], ""/* PDO hash*/)) {
+			if(user_exists($_POST["email"])) {
+				if(password_verify($_POST["password"], get_hash($_POST["email"]))) {
 					remember();
 					return 200;
 				}
 				return 401;
 			}
-			// PDO create account
-			password_hash($_POST["email"], PASSWORD_DEFAULT);
+			create_account($_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT));
 			return 201;
 		}
 	}
