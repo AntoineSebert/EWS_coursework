@@ -1,3 +1,4 @@
+/* eslint-env browser */
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
 	"use strict";
@@ -26,16 +27,25 @@ window.onscroll = function () {
 	}
 };
 
-function change_password_visibility() {
+window.onload = function () {
 	"use strict";
-	document.getElementById("message").style.display = "block";
-	var x = document.getElementById("password_field");
-	if (x.type === "password") {
-		x.type = "text";
-	} else {
-		x.type = "password";
+	var coll = document.getElementsByClassName("collapsible"),
+		i;
+	for (i = 0; i < coll.length; i += 1) {
+		coll[i].addEventListener("click", function () {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.maxHeight) {
+				content.style.maxHeight = null;
+			} else {
+				content.style.maxHeight = content.scrollHeight + "px";
+				this.parentElement.classList.add("consulted");
+			}
+		});
 	}
-}
+
+	// AJAX triggers & handlers
+};
 
 var password_field = document.getElementById("password_field");
 
@@ -70,32 +80,71 @@ password_field.onkeyup = function () {
 	}
 
 	// Validate lowercase letters
-	password_field.value.match(/[a-z]/g) ? check(letter) : uncheck(letter);
+	if (password_field.value.match(/[a-z]/g)) {
+		check(letter);
+	} else {
+		uncheck(letter);
+	}
 	// Validate capital letters
-	password_field.value.match(/[A-Z]/g) ? check(capital) : uncheck(capital);
+	if (password_field.value.match(/[A-Z]/g)) {
+		check(capital);
+	} else {
+		uncheck(capital);
+	}
 	// Validate numbers
-	password_field.value.match(/[0-9]/g) ? check(number) : uncheck(number);
+	if (password_field.value.match(/[0-9]/g)) {
+		check(number);
+	} else {
+		uncheck(number);
+	}
 	// Validate length
-	password_field.value.length >= 8 ? check(length) : uncheck(length);
+	if (password_field.value.length >= 8) {
+		check(length);
+	} else {
+		uncheck(length);
+	}
 };
 
 document.getElementById("filter_field").onkeyup = function () {
 	"use strict";
-	var input, filter, ul, li, element;
-	input = document.getElementById('filter_field');
-	filter = input.value.toUpperCase();
-	ul = document.getElementById("content_list_last_login");
-	li = ul.getElementsByTagName('li');
+	var input = document.getElementById('filter_field'),
+		filter = input.value.toUpperCase(),
+		ul = document.getElementById("content_list_last_login"),
+		li = ul.getElementsByClassName('entry_content'),
+		index,
+		txtValue;
 
 	// Loop through all list items, and hide those who don't match the search query
-	for (element of li) {
-		var txtValue = element.firstElementChild.textContent;
-		if (txtValue.toUpperCase().indexOf(filter) > -1) {
-			element.style.display = "";
-		} else {
-			element.style.display = "none";
+	/*
+	for (index in li) {
+		console.log(li[index] instanceof Element);
+		if (li[index] instanceof Element) {
+			txtValue = li[index].firstElementChild.textContent;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				li[index].style.display = "";
+			} else {
+				li[index].style.display = "none";
+			}
 		}
 	}
+	*/
+	/*
+		var coll = document.getElementsByClassName("collapsible"),
+			i;
+		for (i = 0; i < coll.length; i += 1) {
+			var div = coll[i].nextElementSibling;
+
+			if (div.textContent.toUpperCase().indexOf(filter) > -1) {
+
+				//coll[i].classList.toggle("active");
+				if (div.style.display === "block") {
+					div.style.display = "none";
+				} else {
+					div.style.display = "block";
+				}
+			}
+		}
+		*/
 };
 
 document.getElementById("top_button").onclick = function () {
@@ -107,18 +156,10 @@ document.getElementById("top_button").onclick = function () {
 	});
 };
 
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i += 1) {
+function http_request(method, url, handler) {
 	"use strict";
-	coll[i].addEventListener("click", function () {
-		this.classList.toggle("active");
-		var content = this.nextElementSibling;
-		if (content.style.maxHeight) {
-			content.style.maxHeight = null;
-		} else {
-			content.style.maxHeight = content.scrollHeight + "px";
-		}
-	});
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = handler;
+	xhttp.open(method, url, true);
+	xhttp.send();
 }

@@ -1,19 +1,17 @@
 <?php
 /*
-	https://www.w3schools.com/howto/howto_css_fading_buttons.asp
-	https://www.w3schools.com/HTML/html5_webworkers.asp
-	https://www.w3schools.com/js/js_ajax_intro.asp
+	www.w3schools.com/howto/howto_css_fading_buttons.asp
+	www.w3schools.com/HTML/html5_webworkers.asp
 
-	https://fontawesome.com/icons?d=gallery
-*/
-/*
-	https://secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
-	https://www.w3schools.com/sql/sql_ref_keywords.asp
-	https://www.w3resource.com/mysql/mysql-procedure.php
-	https://www.w3schools.com/xml/schema_intro.asp
-	https://www.w3schools.com/xml/xsl_intro.asp
-	https://www.w3schools.com/xml/xpath_intro.asp
-	https://www.w3schools.com/xml/xquery_intro.asp
+	secure.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration
+	www.w3schools.com/sql/sql_ref_keywords.asp
+	www.w3schools.com/xml/schema_intro.asp
+	www.w3schools.com/xml/xsl_intro.asp
+	www.w3schools.com/xml/xpath_intro.asp
+	www.w3schools.com/xml/xquery_intro.asp
+
+	fontawesome.com/icons?d=gallery
+
 	DATE_ATOM, DATE_RSS, DATE_W3C
 	htmlspecialchars()
 */
@@ -79,28 +77,6 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 	<link rel=stylesheet href="//fonts.googleapis.com/css?family=Srisakdi" type="text/css">
 	<link rel=stylesheet href=presentation/style/index.css type="text/css">
 	<script defer src="presentation/script/index.js"></script>
-	<template>
-		<rss version=2.0 type="application/rss+xml">
-			<channel>
-				<title>RSS Title</title>
-				<description>This is an example of an RSS feed</description>
-				<a>http://www.example.com/main.html</a>
-				<lastBuildDate>
-					<time datetime="2008-02-14 20:00">Mon, 06 Sep 2010 00:01:00 +0000</time>
-				</lastBuildDate>
-				<pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
-				<ttl>1800</ttl>
-				<item>
-					<title>Example entry</title>
-					<description>Here is some text containing an interesting description.</description>
-					<a>http://www.example.com/blog/post/1</a>
-					<guid isPermaLink="false">7bd204c6-1655-4c27-aeee-53f933c5395f</guid>
-					<pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
-				</item>
-
-			</channel>
-		</rss>
-	</template>
 </head>
 
 <body>
@@ -205,7 +181,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 		<ol id=content_list_last_login class=feed_list>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Ainsi, toujours poussés vers de nouveaux rivages,<br>
 						Dans la nuit éternelle emporté sans retour,<br>
@@ -216,7 +192,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Ô lac ! l’année à peine a fini sa carrière,<br>
 						Et près des flots chéris qu’elle devait revoir,<br>
@@ -227,7 +203,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Tu mugissais ainsi sous ces roches profondes ;<br>
 						Ainsi tu te brisais sur leurs flancs déchirés ;<br>
@@ -238,7 +214,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Un soir, t’en souvient-il ? nous voguions en silence ;<br>
 						On n’entendait au loin, sur l’onde et sous les cieux,<br>
@@ -249,7 +225,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Tout à coup des accents inconnus à la terre<br>
 						Du rivage charmé frappèrent les échos :<br>
@@ -260,7 +236,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						« Ô temps, suspends ton vol ! et vous, heures propices,<br>
 						» Suspendez votre cours !<br>
@@ -271,7 +247,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						» Assez de malheureux ici-bas vous implorent,<br>
 						» Coulez, coulez pour eux ;<br>
@@ -282,7 +258,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						» Mais je demande en vain quelques moments encore,<br>
 						» Le temps m’échappe et fuit ;<br>
@@ -293,7 +269,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						» Aimons donc, aimons donc ! de l’heure fugitive,<br>
 						» Hâtons-nous, jouissons !<br>
@@ -304,7 +280,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Temps jaloux, se peut-il que ces moments d’ivresse,<br>
 						Où l’amour à longs flots nous verse le bonheur,<br>
@@ -315,7 +291,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Hé quoi ! n’en pourrons-nous fixer au moins la trace ?<br>
 						Quoi ! passés pour jamais ? quoi ! tout entiers perdus ?<br>
@@ -326,7 +302,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li class=consulted>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Éternité, néant, passé, sombres abîmes,<br>
 						Que faites-vous des jours que vous engloutissez ?<br>
@@ -337,7 +313,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li class=consulted>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Ô lacs ! rochers muets ! grottes ! forêt obscure !<br>
 						Vous que le temps épargne ou qu’il peut rajeunir,<br>
@@ -348,7 +324,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li class=consulted>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Qu’il soit dans ton repos, qu’il soit dans tes orages,<br>
 						Beau lac, et dans l’aspect de tes riants coteaux,<br>
@@ -359,7 +335,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li class=consulted>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Qu’il soit dans le zéphyr qui frémit et qui passe,<br>
 						Dans les bruits de tes bords par tes bords répétés,<br>
@@ -370,7 +346,7 @@ if(strlen($_SERVER['REQUEST_URI']) == 1) {
 			</li>
 			<li class=consulted>
 				<button class=collapsible>Open Collapsible</button>
-				<div class=content>
+				<div class=entry_content>
 					<p>
 						Que le vent qui gémit, le roseau qui soupire,<br>
 						Que les parfums légers de ton air embaumé,<br>
