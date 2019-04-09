@@ -34,6 +34,7 @@ Apache HTTP server
 PHP7 with PDO
 
 ## Routes
+
 `
 base = http://ewsc
 	GET
@@ -108,38 +109,36 @@ publications
 	content : MEDIUMTEXT
 `
 
+include picture
+
 ### Creation script
 
-```sql
-.
-```
-
-### Stored procedures
-
-```sql
-.
-```
+link to ewsc.sql
 
 ### Users
 
 #### Read operations
 
 name : ewsc_r
+
 password : t9x.g}sTL|EF
 
 ##### Operations
 
 data : `SELECT`
+
 structure : `EXECUTE`
 
 #### Read/write operations
 
 name : ewsc_w
+
 password : \IiT42_:@VUW
 
 ##### Operations
 
 data : `INSERT`, `UPDATE`, `DELETE`
+
 structure : `EXECUTE`
 
 ## User interface
@@ -147,5 +146,7 @@ structure : `EXECUTE`
 ### FONTS
 
 headers : https://fonts.google.com/specimen/Lobster
+
 body : https://fonts.google.com/specimen/Comfortaa
+
 brand : https://fonts.google.com/specimen/Srisakdi
