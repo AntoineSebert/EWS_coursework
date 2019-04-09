@@ -1,4 +1,9 @@
 /* eslint-env browser */
+
+/*
+ * WINDOW
+ */
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
 	"use strict";
@@ -46,6 +51,10 @@ window.onload = function () {
 
 	// AJAX triggers & handlers
 };
+
+/*
+ * ELEMENTS
+ */
 
 var password_field = document.getElementById("password_field");
 
@@ -134,11 +143,3 @@ document.getElementById("top_button").onclick = function () {
 		behavior: 'smooth'
 	});
 };
-
-function http_request(method, url, handler) {
-	"use strict";
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = handler;
-	xhttp.open(method, url, true);
-	xhttp.send();
-}
