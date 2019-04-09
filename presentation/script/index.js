@@ -109,42 +109,21 @@ document.getElementById("filter_field").onkeyup = function () {
 	"use strict";
 	var input = document.getElementById('filter_field'),
 		filter = input.value.toUpperCase(),
-		ul = document.getElementById("content_list_last_login"),
-		li = ul.getElementsByClassName('entry_content'),
+		div = document.getElementsByClassName('entry_content'),
 		index,
 		txtValue;
 
 	// Loop through all list items, and hide those who don't match the search query
-	/*
-	for (index in li) {
-		console.log(li[index] instanceof Element);
-		if (li[index] instanceof Element) {
-			txtValue = li[index].firstElementChild.textContent;
-			if (txtValue.toUpperCase().indexOf(filter) > -1) {
-				li[index].style.display = "";
-			} else {
-				li[index].style.display = "none";
-			}
+	[].forEach.call(div, function (element) {
+		var text = element.firstElementChild.textContent.toUpperCase();
+		if (text.includes(filter)) {
+			element.previousElementSibling.classList.add("active");
+			element.style.maxHeight = element.scrollHeight + "px";
+		} else {
+			element.previousElementSibling.classList.remove("active");
+			element.style.maxHeight = null;
 		}
-	}
-	*/
-	/*
-		var coll = document.getElementsByClassName("collapsible"),
-			i;
-		for (i = 0; i < coll.length; i += 1) {
-			var div = coll[i].nextElementSibling;
-
-			if (div.textContent.toUpperCase().indexOf(filter) > -1) {
-
-				//coll[i].classList.toggle("active");
-				if (div.style.display === "block") {
-					div.style.display = "none";
-				} else {
-					div.style.display = "block";
-				}
-			}
-		}
-		*/
+	});
 };
 
 document.getElementById("top_button").onclick = function () {
