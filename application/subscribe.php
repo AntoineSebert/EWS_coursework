@@ -25,9 +25,9 @@ function manage_subscriptions() : int {
 
 /* SECONDARY */
 function add_subscription($email, $url) : int {
-	if(is_subscribed($email, $url)) {
+	if(is_subscribed($email, $url))
 		return 200;
-	} else {
+	else {
 		add_feed($email, $url);
 		return 201;
 	}
