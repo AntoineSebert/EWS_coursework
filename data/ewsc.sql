@@ -2,10 +2,10 @@
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 07 avr. 2019 à 09:21
--- Version du serveur :  5.7.24
--- Version de PHP :  7.3.1
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 12, 2019 at 01:29 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,40 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `ewsc`
+-- Database: `ewsc`
 --
-CREATE DATABASE IF NOT EXISTS `ewsc` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `ewsc`;
-
-DELIMITER $$
---
--- Procédures
---
-DROP PROCEDURE IF EXISTS `add_feed`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `add_feed` (IN `user` VARCHAR(64), IN `feed` VARCHAR(255))  MODIFIES SQL DATA
-INSERT INTO user (url) VALUES (feed)$$
-
-DROP PROCEDURE IF EXISTS `get_user_feed`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_user_feed` (IN `email` VARCHAR(64) CHARSET utf8)  READS SQL DATA
-SELECT * FROM publication
-WHERE publication.feed = (
-    SELECT subscriptions FROM user WHERE user.email = email
-)$$
-
-DROP PROCEDURE IF EXISTS `remove_feed`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `remove_feed` (IN `email` VARCHAR(64), IN `_feed` VARCHAR(255))  MODIFIES SQL DATA
-DELETE FROM email WHERE feed = _feed$$
-
-DROP PROCEDURE IF EXISTS `user_exists`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `user_exists` (IN `_email` VARCHAR(64), OUT `result` INT)  READS SQL DATA
-SELECT email INTO result FROM user WHERE email = _email$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `feeds`
+-- Table structure for table `feeds`
 --
 
 DROP TABLE IF EXISTS `feeds`;
@@ -66,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `feeds` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `publications_atom`
+-- Table structure for table `publications_atom`
 --
 
 DROP TABLE IF EXISTS `publications_atom`;
@@ -91,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `publications_atom` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `publications_rss`
+-- Table structure for table `publications_rss`
 --
 
 DROP TABLE IF EXISTS `publications_rss`;
@@ -125,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `publications_rss` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `subscriptions`
+-- Table structure for table `subscriptions`
 --
 
 DROP TABLE IF EXISTS `subscriptions`;
@@ -138,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `subscriptions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Déclencheurs `subscriptions`
+-- Triggers `subscriptions`
 --
 DROP TRIGGER IF EXISTS `clean_feeds`;
 DELIMITER $$
@@ -149,7 +122,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -161,30 +134,30 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`email`, `hash`, `last_connection`) VALUES
-('test', 'zdcdvsfsfbg', '2019-04-06 09:55:18');
+('test@example.com', '$2y$10$2/AHzyimtm51kRh01VhpKel9QowvDR5BajHvZk0paC9Y0NmWIYezq', '2019-04-12 13:16:16');
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `publications_atom`
+-- Constraints for table `publications_atom`
 --
 ALTER TABLE `publications_atom`
   ADD CONSTRAINT `publications_atom_ibfk_1` FOREIGN KEY (`feed_url`) REFERENCES `feeds` (`url`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `publications_rss`
+-- Constraints for table `publications_rss`
 --
 ALTER TABLE `publications_rss`
   ADD CONSTRAINT `publications_rss_ibfk_1` FOREIGN KEY (`feed_url`) REFERENCES `feeds` (`url`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `subscriptions`
+-- Constraints for table `subscriptions`
 --
 ALTER TABLE `subscriptions`
   ADD CONSTRAINT `subscriptions_ibfk_1` FOREIGN KEY (`user_email`) REFERENCES `users` (`email`) ON DELETE CASCADE,
