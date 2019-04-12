@@ -118,9 +118,7 @@ document.getElementById("filter_field").onkeyup = function () {
 	"use strict";
 	var input = document.getElementById('filter_field'),
 		filter = input.value.toUpperCase(),
-		div = document.getElementsByClassName('entry_content'),
-		index,
-		txtValue;
+		div = document.getElementsByClassName('entry_content');
 
 	// Loop through all list items, and hide those who don't match the search query
 	[].forEach.call(div, function (element) {
