@@ -81,7 +81,7 @@ user = base/{user} (first part of email)
 			201 = inserted
 			400 = not an rss feed
 			401 = not connected or wrong user
-
+	
 	ALL EXCEPT HEAD
 		response
 			405
@@ -91,29 +91,11 @@ user = base/{user} (first part of email)
 
 ### Design
 
-`
-feeds
-	url : VARCHAR(255) PK
-users
-	email : VARCHAR(64) PK
-	hash : VARCHAR(255)
-	last_connection : TIMESTAMP() ON UPDATE CURRENT TIMESTAMP
-subscriptions
-	feed_url : VARCHAR(255) PK INDEX FK ON DELETE CASCADE
-	user_email : VARCHAR(64) PK INDEX FK ON DELETE CASCADE
-publications
-	feed_url : feed FK ON DELETE CASCADE
-	release_date : TIMESTAMP()
-	title : TINYTEXT
-	description : TEXT
-	content : MEDIUMTEXT
-`
-
-include picture
+![schema](README.assets/schema.jpg)
 
 ### Creation script
 
-link to ewsc.sql
+[build script](data/ewsc.sql)
 
 ### Users
 
@@ -129,7 +111,7 @@ data : `SELECT`
 
 structure : `EXECUTE`
 
-#### Read/write operations
+#### Read operations
 
 name : ewsc_w
 
@@ -140,6 +122,12 @@ password : \IiT42_:@VUW
 data : `INSERT`, `UPDATE`, `DELETE`
 
 structure : `EXECUTE`
+
+#### Sampleend-user
+
+email : test@example.com
+
+password : aA000000
 
 ## User interface
 
