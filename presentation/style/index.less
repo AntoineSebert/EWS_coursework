@@ -13,6 +13,7 @@
 body {
 	font-family: Comfortaa;
 	margin: 0;
+	min-height: 100vh;
 }
 
 header {
@@ -324,6 +325,7 @@ main {
 	padding: 20px;
 	background-color: @background;
 	color: @accent;
+	min-height: 470px;
 
 	.loader {
 		border: 16px solid @accent;
@@ -463,27 +465,6 @@ footer {
 
 	#top_button:hover {
 		background-color: @accent;
-	}
-
-	.pagination {
-		display: block;
-		text-align: center;
-
-		a {
-			color: black;
-			padding: 8px 16px;
-			text-decoration: none;
-			transition: background-color .3s;
-		}
-
-		a.active {
-			background-color: @text;
-			color: white;
-		}
-
-		a:hover:not(.active) {
-			background-color: @content;
-		}
 	}
 
 	p {
