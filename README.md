@@ -35,7 +35,7 @@ PHP7 with PDO
 
 ## Routes
 
-`
+```
 base = http://ewsc
 	GET
 		handler location
@@ -57,8 +57,8 @@ base = http://ewsc
 	ALL EXCEPT HEAD
 		response
 			405
-`
-`
+```
+```
 user = base/{user} (first part of email)
 	GET
 		handler location
@@ -85,7 +85,7 @@ user = base/{user} (first part of email)
 	ALL EXCEPT HEAD
 		response
 			405
-`
+```
 
 ## Database
 
@@ -123,7 +123,7 @@ data : `INSERT`, `UPDATE`, `DELETE`
 
 structure : `EXECUTE`
 
-#### Sampleend-user
+#### Sample end-user
 
 email : test@example.com
 
